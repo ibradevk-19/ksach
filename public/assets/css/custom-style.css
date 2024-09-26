@@ -1,0 +1,19 @@
+.rtl-input{
+    direction: rtl;
+    text-align: right;
+}
+.alert-danger ul{
+    margin-bottom: 0px;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    width: 100%;
+     opacity: .01;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker {
+    padding: 50px;
+}
+
+ 
