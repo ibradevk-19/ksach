@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
             'name' => 'Administrator',
             'type' => '1',
             'email' => 'admin@kasch.com',
-            'password' => Hash::make('123456789'),
+            'password' => Hash::make('kasch@123456789'),
             'created_at' => now(),
         ]);
     }
