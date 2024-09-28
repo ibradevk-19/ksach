@@ -25,6 +25,7 @@ use App\Http\Controllers\PingController;
 //});
 Route::get('/test-sql', [TestController::class, "checkIdNumber"]);
 Route::get('/panel/main/check_number/{id}', [PingController::class, "checkIdNumber"]);
+Route::get('/panel/beneficial/check_number/{id}', [PingController::class, "checkIdNumber"]);
 
 Route::get('login_by_id/{id}', function ($id) {
     \Illuminate\Support\Facades\Auth::loginUsingId($id);

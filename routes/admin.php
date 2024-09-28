@@ -52,14 +52,17 @@ Route::resource('roles', RoleController::class)->middleware(['CheckIfSuperAdmin'
 Route::get('roles_del', [RoleController::class, 'delete_roles'])->name('role.del');
 Route::get('logout', [AdminAuthController::class, "logout"])->name("admin.logout")->middleware('AdminAuth');
 
+// _______________beneficial________________
+Route::get('all-data', [MainController::class,'index'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.index');
+Route::get('beneficial/create', [MainController::class,'create'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.create');
+Route::post('beneficial/store', [MainController::class,'store'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.store');
+Route::get('beneficial/{id}/edit', [MainController::class,'edit'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.edit');
+Route::get('beneficial/{id}/details', [MainController::class,'details'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.details');
 
-Route::get('all-data', [MainController::class,'index'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.index');;
-Route::get('main/create', [MainController::class,'create'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.create');;
-Route::post('main/store', [MainController::class,'store'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.store');;
-Route::get('main/{id}/edit', [MainController::class,'edit'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.edit');;
-Route::get('main/{id}/details', [MainController::class,'details'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.details');;
+Route::delete('beneficial/destroy/{id}', [MainController::class,'destroy'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.destroy');
 
-Route::delete('main/destroy/{id}', [MainController::class,'destroy'])->middleware(['CheckIfSuperAdmin'])->name('admin.main.destroy');;
+Route::get('beneficial/create-form', [BeneficialController::class,'createNew']);
+
 
 // _______________________________
 Route::get('profile', [AdminController::class, 'Profile'])->name('admin.profile.view');
