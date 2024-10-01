@@ -16,8 +16,7 @@
 
 
 -- Dumping database structure for so
-CREATE DATABASE IF NOT EXISTS `so` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `so`;
+
 
 -- Dumping structure for table so.actors
 CREATE TABLE IF NOT EXISTS `actors` (
