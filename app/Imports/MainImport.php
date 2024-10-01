@@ -40,7 +40,7 @@ class MainImport implements ToCollection
                 if ($attribute[3] != null) {
                     // Check if the user already exists
                     $user_exest = WordFood::where('id_num', $attribute[3])->first();
-                    $user_data = WordFood::where('id_num', $attribute[3])->first();
+                  //  $user_data = WordFood::where('id_num', $attribute[3])->first();
 
                     if ($user_exest) {
                         Log::info('Duplicate user found for ID: ' . $attribute[3]);
@@ -55,20 +55,7 @@ class MainImport implements ToCollection
                             'mobile' => $attribute[6],
                             'reson' => 'مكرر'
                         ]);
-                    } elseif ($user_data == null) {
-                        Log::warning('Invalid ID found: ' . $attribute[3]);
-
-                        ImportExcelResulte::create([
-                            'full_name' => $attribute[2],
-                            'id_num' => $attribute[3],
-                            'wife_name' => $attribute[4],
-                            'wife_id_num' => $attribute[5],
-                            'family_count' => $attribute[7],
-                            'marital_status' => 1,
-                            'mobile' => $attribute[6],
-                            'reson' => 'رقم الهوية خطأ'
-                        ]);
-                    } else {
+                    }  else {
                         Log::info('New user being added for ID: ' . $attribute[3]);
 
                         WordFood::create([
@@ -84,6 +71,22 @@ class MainImport implements ToCollection
                             'status' => 2 // لم يستلم
                         ]);
                     }
+
+
+                    // elseif ($user_data == null) {
+                    //     Log::warning('Invalid ID found: ' . $attribute[3]);
+
+                    //     ImportExcelResulte::create([
+                    //         'full_name' => $attribute[2],
+                    //         'id_num' => $attribute[3],
+                    //         'wife_name' => $attribute[4],
+                    //         'wife_id_num' => $attribute[5],
+                    //         'family_count' => $attribute[7],
+                    //         'marital_status' => 1,
+                    //         'mobile' => $attribute[6],
+                    //         'reson' => 'رقم الهوية خطأ'
+                    //     ]);
+                    // }
                 }
 
             } catch (\Throwable $th) {
