@@ -22,7 +22,7 @@ class ImportSokanTable extends Command
     public function handle()
     {
         // مسار ملف SQL
-        $path = database_path('sokan.sql');
+        $path = database_path('acto.sql');
 
         // التحقق من وجود الملف
         if (!File::exists($path)) {
