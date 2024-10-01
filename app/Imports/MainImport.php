@@ -40,7 +40,7 @@ class MainImport implements ToCollection
                 if ($attribute[3] != null) {
                     // Check if the user already exists
                     $user_exest = WordFood::where('id_num', $attribute[3])->first();
-                    $user_data = Civilrecord::where('ID', $attribute[3])->first();
+                    $user_data = WordFood::where('id_num', $attribute[3])->first();
 
                     if ($user_exest) {
                         Log::info('Duplicate user found for ID: ' . $attribute[3]);
