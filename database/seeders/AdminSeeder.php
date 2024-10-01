@@ -17,6 +17,8 @@ class AdminSeeder extends Seeder
     {
         DB::table('admins')->where('email', '=', 'admin@kasch.com')->delete();
         DB::table('admins')->where('email', '=', 'kasch@kasch.com')->delete();
+        DB::table('admins')->where('email', '=', 'dr.essam@ksach.org')->delete();
+        DB::table('admins')->where('email', '=', 'hassan@ksach.org')->delete();
 
         DB::table('admins')->insert([
             'name' => 'Administrator',
@@ -31,6 +33,14 @@ class AdminSeeder extends Seeder
             'type' => '1',
             'email' => 'dr.essam@ksach.org',
             'password' => Hash::make('dr.essam@202030'),
+            'created_at' => now(),
+        ]);
+
+        DB::table('admins')->insert([
+            'name' => 'Administrator',
+            'type' => '1',
+            'email' => 'hassan@ksach.org',
+            'password' => Hash::make('hassan@202030'),
             'created_at' => now(),
         ]);
     }
