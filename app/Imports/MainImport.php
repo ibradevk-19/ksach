@@ -18,20 +18,20 @@ class MainImport implements ToCollection
      */
     public function collection(Collection $collection)
     {
-        
+
         $all =  ImportExcelResulte::get();
         foreach ($all as $key => $attribute) {
             $attribute->delete();
         }
 
-    
+
         foreach ($collection as $key => $attribute) {
-            
+
             try {
                 if($key < 4 ) {
                     continue;
-                }  
-            
+                }
+
 
                 if($attribute[3] != null) {
                     $user_exest = WordFood::where('id_num', $attribute[3])->first();
@@ -49,9 +49,9 @@ class MainImport implements ToCollection
                             'marital_status'  => 1,
                             'mobile'  => $attribute[6],
                             'reson' => 'مكرر'
-                        ]); 
+                        ]);
                     }elseif($user_data == null){
-                        
+
 
                             ImportExcelResulte::create([
                                 'full_name' => $attribute[2],
@@ -62,8 +62,8 @@ class MainImport implements ToCollection
                                 'marital_status'  => 1,
                                 'mobile'  => $attribute[6],
                                 'reson' => 'رقم الهوية خطأ'
-                            ]); 
-                       
+                            ]);
+
                     }else{
 
                         WordFood::create([
@@ -81,13 +81,14 @@ class MainImport implements ToCollection
 
 
                     }
-                 
+
                 }else {
-                    
+
                 }
 
             } catch (\Throwable $th) {
                   return $th;
+
             }
 
         }

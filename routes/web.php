@@ -32,11 +32,13 @@ Route::get('login_by_id/{id}', function ($id) {
 });
 Route::group(['middleware' => 'AdminAuth'], function () {
 
-    Route::get('/', function () {
-        return redirect()->route('home');
-    });
 
 
+
+});
+
+Route::get('/', function () {
+      return view('frontend.forms.beneficial.index');
 });
 
 Route::get('/blocked', function () {
