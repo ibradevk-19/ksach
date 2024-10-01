@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Actor;
 use App\Models\Family;
+use App\Models\WordFood;
 use App\Http\Controllers\Controller;
 use phpDocumentor\Reflection\Types\Parent_;
 use Spatie\Permission\Models\Role;
@@ -25,7 +26,8 @@ class ActorController extends Controller
                     'name' => $item->name,
                     'id_num' => $item->id_num,
                     'mobile_num' => $item->mobile_num,
-                    'flamily_name' => $item->flamily->name
+                    'flamily_name' => $item->flamily->name,
+                    'count' => WordFood::where('actor_id', $item->id)->count(),
                 ];
             })->toArray();
 
@@ -63,7 +65,7 @@ class ActorController extends Controller
 
     public function store(Request $request)
     {
-         
+
         $request->validate([
             'name' => 'required',
             'id_num' => 'required|integer',

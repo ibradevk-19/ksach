@@ -63,6 +63,7 @@
                                     <th>رقم الهوية</th>
                                     <th>رقم الجوال</th>
                                     <th>العائلة</th>
+                                    <th>عدد المستفيدين</th>
                                     <th>الاجراءات </th>
                                 </tr>
                                 </thead>
@@ -106,6 +107,7 @@
                     {data: 'name', name: 'name', title: 'الإسم'},
                     {data: 'id_num', name: 'id_num', title: 'رقم الهوية',searchable:false},
                     {data: 'mobile_num', name: 'mobile_num', title: 'رقم الجوال',searchable:false},
+                    {data: 'count', name: 'count', title: 'عدد المستفيدين ',searchable:false},
                     {data: 'flamily_name', name: 'flamily_name', title: 'العائلة',searchable:false},
                 ];
             var data_actions = {data: 'action', name: 'action', orderable: false, searchable: false, title: 'الإجراءات'};
@@ -117,7 +119,7 @@
                 columns_data.push(data_actions);
             }
 
-         
+
             $("#datatable").DataTable({
                 processing: true,
                 serverSide: true,
