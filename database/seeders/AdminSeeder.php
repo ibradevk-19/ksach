@@ -25,5 +25,13 @@ class AdminSeeder extends Seeder
             'password' => Hash::make('kasch@123456789'),
             'created_at' => now(),
         ]);
+
+        DB::table('admins')->insert([
+            'name' => 'Administrator',
+            'type' => '1',
+            'email' => 'dr.essam@ksach.org',
+            'password' => Hash::make('dr.essam@202030'),
+            'created_at' => now(),
+        ]);
     }
 }

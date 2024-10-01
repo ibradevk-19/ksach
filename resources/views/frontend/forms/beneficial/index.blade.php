@@ -368,7 +368,25 @@
                     <option value="زينقو">زينقو</option>
                 </select>
             </div>
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label">هل يوجد أضرار حرب 2023</label>
+                <select class="form-select" id="marital_status" name="marital_status" required>
+                    <option disabled value="">اختر </option>
+                    <option value="نعم">نعم</option>
+                    <option value="لا">لا</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label">نوع الضرر</label>
+                <select class="form-select" id="marital_status" name="marital_status" >
+                    <option disabled value="">اختر </option>
+                    <option value="ضرر كلي">ضرر كلي</option>
+                    <option value="ضرر جزئي">ضرر جزئي</option>
+                    <option value="جزء غير قابل للسكن">جزء غير قابل للسكن</option>
+                </select>
 
+
+            </div>
         </div>
 
     <div class="row" style="margin: 20px">
