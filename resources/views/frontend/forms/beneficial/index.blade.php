@@ -305,11 +305,82 @@
                     <option value="المغازي">الزوايدة</option>
                 </select>
             </div>
+
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label"> التجمع السكني </label>
+                <select class="form-select" id="marital_status" name="marital_status" required>
+                    <option disabled value="">اختر </option>
+                    <option value="غزة">خانيونس البلد</option>
+                    <option value="خان يونس">مخيم خانيونس </option>
+                    <option value="المواصي خانيونس">المواصي خانيونس</option>
+                    <option value="بني سهيلا">بني سهيلا</option>
+                    <option value="عبسان الكبيرة">عبسان الكبيرة</option>
+                    <option value="عبسان الجديدة"> عبسان الجديدة</option>
+                    <option value="خزاعة">خزاعة</option>
+                    <option value="الفخاري">الفخاري</option>
+                    <option value="قرارة">قرارة</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="full_name" class="form-label">الحى</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" required>
+            </div>
+            <div class="col-md-3">
+                <label for="full_name" class="form-label">الشارع</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" required>
+            </div>
+            <div class="col-md-3">
+                <label for="full_name" class="form-label">اقرب معلم</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" required>
+            </div>
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label">نازح / مقيم</label>
+                <select class="form-select" id="marital_status" name="marital_status" required>
+                    <option disabled value="">اختر </option>
+                    <option value="نازح">نازح</option>
+                    <option value="مقيم">مقيم</option>
+                </select>
+            </div>
+
+
         </div>
 
 
+        <div class="row mb-3">
 
-        <button type="submit" class="btn btn-primary">إرسال</button>
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label">ملك / إجار</label>
+                <select class="form-select" id="marital_status" name="marital_status" required>
+                    <option disabled value="">اختر </option>
+                    <option value="ملك">ملك</option>
+                    <option value="إجار">إجار</option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label">نوع السكن</label>
+                <select class="form-select" id="marital_status" name="marital_status" required>
+                    <option disabled value="">اختر </option>
+                    <option value="ملك">باطون</option>
+                    <option value="زينقو">زينقو</option>
+                </select>
+            </div>
+
+        </div>
+
+    <div class="row" style="margin: 20px">
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary">تسجيل</button>
+
+        </div>
+
+    </div>
+
+
+
     </form>
 </div>
 
