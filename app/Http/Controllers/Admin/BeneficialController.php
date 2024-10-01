@@ -8,6 +8,8 @@ use App\Exports\TaxExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\BeneficialCheckerImport;
 use App\Models\ImportExcelResulte;
+use App\Models\Family;
+use App\Models\Actor;
 
 class BeneficialController extends Controller
 {
@@ -37,6 +39,13 @@ class BeneficialController extends Controller
                 //return redirect()->route('checker.create')->with(["success" => "تم جلب  البيانات  بنجاح"]);
             } catch (Exception $e) {
                 return redirect()->route('checker.create')->with(["error" => "حدثت مشكلة في جلب البيانات"]);
-            }  
+            }
+    }
+
+
+    public function createNew(Request $request) {
+        $families = Family::all();
+        $actors = Actor::all();
+       return view('beneficial.new-create', compact('families','actors'));
     }
 }
