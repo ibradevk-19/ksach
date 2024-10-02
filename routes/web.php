@@ -8,6 +8,8 @@ use App\Models\UserScore;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PingController;
+use App\Http\Controllers\BeneficialController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,10 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 
 
 });
+
+
+Route::post('beneficial/store', [BeneficialController::class, "store"])->name('beneficial.store');
+
 
 Route::get('/', function () {
       return view('frontend.forms.beneficial.index');

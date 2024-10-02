@@ -39,7 +39,11 @@
   <link rel="stylesheet" href="{{ asset('frontend/assets/scss/section-title/section-title-05.css') }}" />
 
   <style>
-
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
   </style>
 </head>
 
@@ -112,7 +116,7 @@
         <!-- container -->
     </div>
 
-    <form action="" method="POST">
+    <form action="{{ route('beneficial.store') }}" method="POST">
         @csrf
         <div class="row mb-3">
             <div class="col-md-3">
@@ -121,7 +125,7 @@
             </div>
             <div class="col-md-3">
                 <label for="id_num" class="form-label">رقم هوية المعيل </label>
-                <input type="text" class="form-control" id="id_num" name="id_num" required>
+                <input type="number" min="100000000" min="999999999" class="form-control" id="id_num" name="id_num" required>
             </div>
             <div class="col-md-3">
                 <label for="wife_name" class="form-label">اسم الزوجة </label>
@@ -156,48 +160,48 @@
             </div>
             <div class="col-md-3">
                 <label for="mobile" class="form-label">عدد الذكور </label>
-                <input type="number" class="form-control" id="mobile" name="mobile" required>
+                <input type="number" class="form-control" id="male_count" name="male_count" required>
             </div>
         </div>
         <div class="row mb-3">
 
             <div class="col-md-3">
-                <label for="mobile" class="form-label"> عدد الاناث </label>
-                <input type="number" class="form-control" id="mobile" name="mobile" required>
+                <label for="female_count" class="form-label"> عدد الاناث </label>
+                <input type="number" class="form-control" id="female_count" name="female_count" required>
             </div>
 
             <div class="col-md-3">
-                <label for="mobile" class="form-label">عدد الاطفال اقل من سنتين</label>
-                <input type="number" class="form-control" id="mobile" name="mobile" required>
+                <label for="children_under_2" class="form-label">عدد الاطفال اقل من سنتين</label>
+                <input type="number" class="form-control" id="children_under_2" name="children_under_2" required>
             </div>
 
             <div class="col-md-3">
-                <label for="mobile" class="form-label">عدد اطفال اقل من 3 سنوات </label>
-                <input type="number" class="form-control" id="mobile" name="mobile" required>
+                <label for="children_under_3" class="form-label">عدد اطفال اقل من 3 سنوات </label>
+                <input type="number" class="form-control" id="children_under_3" name="children_under_3" required>
             </div>
 
             <div class="col-md-3">
-                <label for="mobile" class="form-label">عدد الابناء من 5 ل 16 </label>
-                <input type="number" class="form-control" id="mobile" name="mobile" required>
+                <label for="children_5_to_16" class="form-label">عدد الابناء من 5 ل 16 </label>
+                <input type="number" class="form-control" id="children_5_to_16" name="children_5_to_16" required>
             </div>
         </div>
 
         <div class="row mb-3">
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">الوثيقة </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="document" class="form-label">الوثيقة </label>
+                <select class="form-select" id="document" name="document" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="single"> هوية فلسطينية</option>
-                    <option value="married">جواز سفر </option>
-                    <option value="divorced">رقم تعريف </option>
-                    <option value="widowed">وثيقة اردنية </option>
+                    <option value="هوية فلسطينية"> هوية فلسطينية</option>
+                    <option value="جواز سفر ">جواز سفر </option>
+                    <option value="رقم تعريف">رقم تعريف </option>
+                    <option value="وثيقة اردنية">وثيقة اردنية </option>
                 </select>
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">هل المعيل مصاب حرب </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="is_breadwinner_disabled" class="form-label">هل المعيل مصاب حرب </label>
+                <select class="form-select" id="is_breadwinner_disabled" name="is_breadwinner_disabled" required>
                     <option value="" disabled selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
@@ -205,8 +209,8 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">هل المعيل ذو اعاقة </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="has_disability" class="form-label">هل المعيل ذو اعاقة </label>
+                <select class="form-select" id="has_disability" name="has_disability" required>
                     <option value="" disabled selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
@@ -214,11 +218,11 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label"> نوع الاعاقة</label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="disability_type" class="form-label"> نوع الاعاقة</label>
+                <select class="form-select" id="disability_type" name="disability_type" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="yes">إعاقة بصرية </option>
-                    <option value="no">إعاقة سمعية  </option>
+                    <option value="إعاقة بصرية">إعاقة بصرية </option>
+                    <option value=" إعاقة سمعية">إعاقة سمعية  </option>
                     <option value="no">إعاقة حركية </option>
                     <option value="no"> إعاقة عقلية</option>
                     <option value="no">إعاقة نفسية  </option>
@@ -233,17 +237,17 @@
         <div class="row mb-3">
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">لديه امراض مزمنه  </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="has_chronic_disease" class="form-label">لديه امراض مزمنه  </label>
+                <select class="form-select" id="has_chronic_disease" name="has_chronic_disease" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="single"> نعم </option>
-                    <option value="married"> لا </option>
+                    <option value="yes"> نعم </option>
+                    <option value="no"> لا </option>
                 </select>
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">هل  يوجد فقيد حرب </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="war_victim" class="form-label">هل  يوجد فقيد حرب </label>
+                <select class="form-select" id="war_victim" name="war_victim" required>
                     <option value="" disabled selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
@@ -251,8 +255,8 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">هل يوجد مصدر دخل   </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="income_source" class="form-label">هل يوجد مصدر دخل   </label>
+                <select class="form-select" id="income_source" name="income_source" required>
                     <option value="" disabled selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
@@ -260,8 +264,8 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label"> هل المعيل موظف ؟ </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="is_employee" class="form-label"> هل المعيل موظف ؟ </label>
+                <select class="form-select" id="is_employee" name="is_employee" required>
                     <option value="" disabled selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
@@ -272,13 +276,13 @@
 
         <div class="row mb-3">
             <div class="col-md-3">
-                <label for="mobile" class="form-label">متوسط الدخل </label>
-                <input type="number" class="form-control" id="mobile" name="mobile" required>
+                <label for="average_income" class="form-label">متوسط الدخل </label>
+                <input type="number" class="form-control" id="average_income" name="average_income" required>
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label"> المحافظة </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="province" class="form-label"> المحافظة </label>
+                <select class="form-select" id="province" name="province" required>
                     <option value="" disabled selected>اختر  </option>
                     <option value="yes"> شمال غزة </option>
                     <option value="no">غزة </option>
@@ -289,8 +293,8 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label"> المدينة </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="city" class="form-label"> المدينة </label>
+                <select class="form-select" id="city" name="city" required>
                     <option disabled value="">اختر مدينة</option>
                     <option value="غزة">غزة</option>
                     <option value="خان يونس">خان يونس</option>
@@ -307,8 +311,8 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label"> التجمع السكني </label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="housing_complex" class="form-label"> التجمع السكني </label>
+                <select class="form-select" id="housing_complex" name="housing_complex" required>
                     <option disabled value="">اختر </option>
                     <option value="غزة">خانيونس البلد</option>
                     <option value="خان يونس">مخيم خانيونس </option>
@@ -325,20 +329,20 @@
 
         <div class="row mb-3">
             <div class="col-md-3">
-                <label for="full_name" class="form-label">الحى</label>
-                <input type="text" class="form-control" id="full_name" name="full_name" required>
+                <label for="neighborhood" class="form-label">الحى</label>
+                <input type="text" class="form-control" id="neighborhood" name="neighborhood" required>
             </div>
             <div class="col-md-3">
-                <label for="full_name" class="form-label">الشارع</label>
-                <input type="text" class="form-control" id="full_name" name="full_name" required>
+                <label for="street" class="form-label">الشارع</label>
+                <input type="text" class="form-control" id="street" name="street" required>
             </div>
             <div class="col-md-3">
-                <label for="full_name" class="form-label">اقرب معلم</label>
-                <input type="text" class="form-control" id="full_name" name="full_name" required>
+                <label for="nearest_landmark" class="form-label">اقرب معلم</label>
+                <input type="text" class="form-control" id="nearest_landmark" name="nearest_landmark" required>
             </div>
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">نازح / مقيم</label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="is_displaced" class="form-label">نازح / مقيم</label>
+                <select class="form-select" id="is_displaced" name="is_displaced" required>
                     <option disabled value="">اختر </option>
                     <option value="نازح">نازح</option>
                     <option value="مقيم">مقيم</option>
@@ -352,8 +356,8 @@
         <div class="row mb-3">
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">ملك / إجار</label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="is_owner" class="form-label">ملك / إجار</label>
+                <select class="form-select" id="is_owner" name="is_owner" required>
                     <option disabled value="">اختر </option>
                     <option value="ملك">ملك</option>
                     <option value="إجار">إجار</option>
@@ -361,24 +365,24 @@
             </div>
 
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">نوع السكن</label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="housing_type" class="form-label">نوع السكن</label>
+                <select class="form-select" id="housing_type" name="housing_type" required>
                     <option disabled value="">اختر </option>
                     <option value="ملك">باطون</option>
                     <option value="زينقو">زينقو</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">هل يوجد أضرار حرب 2023</label>
-                <select class="form-select" id="marital_status" name="marital_status" required>
+                <label for="war_damage" class="form-label">هل يوجد أضرار حرب 2023</label>
+                <select class="form-select" id="war_damage" name="war_damage" required>
                     <option disabled value="">اختر </option>
                     <option value="نعم">نعم</option>
                     <option value="لا">لا</option>
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="marital_status" class="form-label">نوع الضرر</label>
-                <select class="form-select" id="marital_status" name="marital_status" >
+                <label for="damage_type" class="form-label">نوع الضرر</label>
+                <select class="form-select" id="damage_type" name="damage_type" >
                     <option disabled value="">اختر </option>
                     <option value="ضرر كلي">ضرر كلي</option>
                     <option value="ضرر جزئي">ضرر جزئي</option>
