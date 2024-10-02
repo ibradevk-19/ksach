@@ -41,7 +41,8 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 
 
 Route::post('beneficial/store', [BeneficialController::class, "store"])->name('beneficial.store');
-
+Route::get('/get-cities/{province}', [LocationController::class, 'getCities']);
+Route::get('/get-housing-complexes/{city}', [LocationController::class, 'getHousingComplexes']);
 
 Route::get('/', function () {
       return view('frontend.forms.beneficial.index');
