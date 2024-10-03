@@ -43,7 +43,7 @@ class BeneficialController extends Controller
      */
     private function isBeneficialExists($idNum,$wife_id_num)
     {
-        return WordFood::where('id_num', $idNum)->where('id_num',$wife_id_num)->exists();
+        return WordFood::where('id_num', $idNum)->orWhere('id_num',$wife_id_num)->exists();
     }
 
     /**
