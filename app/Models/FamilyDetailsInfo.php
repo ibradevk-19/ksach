@@ -15,7 +15,8 @@ class FamilyDetailsInfo extends Model
         'war_damage','damage_type','male_count','female_count','children_under_2',
         'children_under_3','children_5_to_16','document','is_breadwinner_disabled',
         'has_disability','disability_type','has_chronic_disease','war_victim',
-        'income_source','average_income','is_employee','marital_status',
+        'income_source','average_income','is_employee','marital_status','province_id',
+        'city_id','housing_complex_id'
     ];
 
     public function beneficial() {

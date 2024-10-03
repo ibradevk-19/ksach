@@ -8,6 +8,8 @@ use App\Models\HousingComplex;
 
 class LocationController extends Controller
 {
+
+
     public function getCities($provinceId)
     {
         $cities = City::where('province_id', $provinceId)->get();

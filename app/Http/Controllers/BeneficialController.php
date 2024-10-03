@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WordFood;
+use App\Models\Province;
 
 class BeneficialController extends Controller
 {
+
+    public function crate() {
+        $provinces = Province::all();
+
+        return view('frontend.forms.beneficial.index')->with([
+            'provinces' => $provinces,
+        ]);
+    }
+
     public function store(Request $request) {
 
          //chech if id exest

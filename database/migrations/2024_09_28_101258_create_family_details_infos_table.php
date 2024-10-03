@@ -44,6 +44,9 @@ class CreateFamilyDetailsInfosTable extends Migration
             $table->string('repair_status')->nullable();
             $table->boolean('has_disability')->default(false);
             $table->string('disability_type')->default(false);
+            $table->bigInteger('province_id')->unsigned();
+            $table->bigInteger('city_id')->unsigned();
+            $table->bigInteger('housing_complex_id')->unsigned();
             $table->timestamps();
         });
     }

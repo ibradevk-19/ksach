@@ -45,6 +45,9 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
   </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body>
@@ -284,11 +287,9 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="province" class="form-label"> المحافظة </label>
                 <select class="form-select" id="province" name="province" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="yes"> شمال غزة </option>
-                    <option value="no">غزة </option>
-                    <option value="yes"> الوسطى</option>
-                    <option value="no">خانيونس</option>
-                    <option value="yes">  رفح</option>
+                    @foreach($provinces as $province)
+                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -296,17 +297,6 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="city" class="form-label"> المدينة </label>
                 <select class="form-select" id="city" name="city" required>
                     <option disabled value="">اختر مدينة</option>
-                    <option value="غزة">غزة</option>
-                    <option value="خان يونس">خان يونس</option>
-                    <option value="رفح">رفح</option>
-                    <option value="دير البلح">دير البلح</option>
-                    <option value="البريج">البريج</option>
-                    <option value="جباليا">جباليا</option>
-                    <option value="بيت لاهيا">بيت لاهيا</option>
-                    <option value="بيت لاهيا">بيت حانون</option>
-                    <option value="النصيرات">النصيرات</option>
-                    <option value="المغازي">المغازي</option>
-                    <option value="المغازي">الزوايدة</option>
                 </select>
             </div>
 
@@ -314,17 +304,9 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="housing_complex" class="form-label"> التجمع السكني </label>
                 <select class="form-select" id="housing_complex" name="housing_complex" required>
                     <option disabled value="">اختر </option>
-                    <option value="غزة">خانيونس البلد</option>
-                    <option value="خان يونس">مخيم خانيونس </option>
-                    <option value="المواصي خانيونس">المواصي خانيونس</option>
-                    <option value="بني سهيلا">بني سهيلا</option>
-                    <option value="عبسان الكبيرة">عبسان الكبيرة</option>
-                    <option value="عبسان الجديدة"> عبسان الجديدة</option>
-                    <option value="خزاعة">خزاعة</option>
-                    <option value="الفخاري">الفخاري</option>
-                    <option value="قرارة">قرارة</option>
                 </select>
             </div>
+
         </div>
 
         <div class="row mb-3">
@@ -471,7 +453,47 @@ input[type="number"]::-webkit-outer-spin-button {
 
 
  <!--====== Tiny Slider js ======-->
+ <script>
 
+$(document).ready(function () {
+    $('#province').on('change', function () {
+        var provinceId = $(this).val();
+        if (provinceId) {
+            $.ajax({
+                url: '/get-cities/' + provinceId,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('#city').empty();
+                    $('#city').append('<option disabled selected>اختر مدينة</option>');
+                    $.each(data, function (key, value) {
+                        $('#city').append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        }
+    });
+
+    $('#city').on('change', function () {
+        var cityId = $(this).val();
+        if (cityId) {
+            $.ajax({
+                url: '/get-housing-complexes/' + cityId,
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $('#housing_complex').empty();
+                    $('#housing_complex').append('<option disabled selected>اختر</option>');
+                    $.each(data, function (key, value) {
+                        $('#housing_complex').append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        }
+    });
+});
+
+ </script>
 
 </body>
 

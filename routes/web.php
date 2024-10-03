@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PingController;
 use App\Http\Controllers\BeneficialController;
 
+use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +44,9 @@ Route::group(['middleware' => 'AdminAuth'], function () {
 Route::post('beneficial/store', [BeneficialController::class, "store"])->name('beneficial.store');
 Route::get('/get-cities/{province}', [LocationController::class, 'getCities']);
 Route::get('/get-housing-complexes/{city}', [LocationController::class, 'getHousingComplexes']);
+Route::get('/', [BeneficialController::class, 'crate']);
 
-Route::get('/', function () {
-      return view('frontend.forms.beneficial.index');
-});
+
 
 Route::get('/blocked', function () {
 
