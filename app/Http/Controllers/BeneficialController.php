@@ -7,6 +7,8 @@ use App\Models\WordFood;
 use App\Models\Province;
 use App\Models\FamilyDetailsInfo;
 use App\Http\Requests\StoreBeneficialRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class BeneficialController extends Controller
 {
@@ -157,6 +159,15 @@ class BeneficialController extends Controller
             'is_employee' => $request->is_employee,
             'marital_status' => $request->marital_status,
         ]);
+    }
+
+
+    private function createUser($request) {
+         User::create([
+            'name' => $request->full_name,
+            'id_number' => $request->id_num,
+            'password' => Hash::make($request->id_num),
+         ]);
     }
 
 }

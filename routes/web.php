@@ -9,6 +9,7 @@ use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PingController;
 use App\Http\Controllers\BeneficialController;
+use App\Http\Controllers\UserAuthController;
 
 use App\Http\Controllers\LocationController;
 
@@ -71,3 +72,10 @@ Route::group(['prefix' => 'panel'], function () {
 
 
 
+Route::get('/login', [UserAuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [UserAuthController::class, 'login'])->name('login.custom');
+Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth');
