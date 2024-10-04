@@ -23,19 +23,24 @@ class BeneficialController extends Controller
     {
         // تحقق مما إذا كانت بيانات العائلة موجودة مسبقاً
         if ($this->isBeneficialExists($request->id_num,$request->wife_id_num)) {
-            return redirect()->back()->with('error', 'بيانات العائلة مسجلة مسبقا');
+
+            $this->updateBeneficialAndFamilyDetails($request->id_num, $request);
+            return redirect()->back()->with('success', 'تم تحديث البيانات بنجاح');
+           // return redirect()->back()->with('error', 'بيانات العائلة مسجلة مسبقا');
+        }else{
+            // إذا كان المستفيد غير موجود، قم بإنشاء مستفيد جديد وتفاصيل الأسرة
+            $user = $this->createBeneficial($request);
+
+            if ($user) {
+                // إنشاء تفاصيل الأسرة للمستفيد الجديد
+                $this->createFamilyDetails($user->id, $request);
+                return redirect()->back()->with('success', 'تم حفظ البيانات بنجاح');
+            }
+
+            return redirect()->back()->with('error', 'حدث خطأ أثناء حفظ البيانات');
         }
 
-        // إنشاء مستخدم جديد
-        $user = $this->createBeneficial($request);
 
-        if ($user) {
-            // إنشاء تفاصيل الأسرة
-            $this->createFamilyDetails($user->id, $request);
-            return redirect()->back()->with('success', 'تم حفظ البيانات بنجاح');
-        }
-
-        return redirect()->back()->with('error', 'حدث خطأ أثناء حفظ البيانات');
     }
 
     /**
@@ -43,7 +48,11 @@ class BeneficialController extends Controller
      */
     private function isBeneficialExists($idNum,$wife_id_num)
     {
-        return WordFood::where('id_num', $idNum)->orWhere('id_num',$wife_id_num)->exists();
+        return WordFood::where('id_num', $idNum)
+                            ->orWhere('id_num',$wife_id_num)
+                            ->orWhere('wife_id_num',$idNum)
+                            ->orWhere('wife_id_num',$wife_id_num)
+                            ->exists();
     }
 
     /**
@@ -69,6 +78,58 @@ class BeneficialController extends Controller
     {
         FamilyDetailsInfo::create([
             'beneficial_id' => $beneficialId,
+            'province' => $request->province,
+            'city' => $request->city,
+            'housing_complex' => $request->housing_complex,
+            'neighborhood' => $request->neighborhood,
+            'street' => $request->street,
+            'nearest_landmark' => $request->nearest_landmark,
+            'is_displaced' => $request->is_displaced,
+            'is_owner' => $request->is_owner,
+            'housing_type' => $request->housing_type,
+            'war_damage' => $request->war_damage,
+            'damage_type' => $request->damage_type,
+            'male_count' => $request->male_count,
+            'female_count' => $request->female_count,
+            'children_under_2' => $request->children_under_2,
+            'children_under_3' => $request->children_under_3,
+            'children_5_to_16' => $request->children_5_to_16,
+            'document' => $request->document,
+            'is_breadwinner_disabled' => $request->is_breadwinner_disabled,
+            'has_disability' => $request->has_disability,
+            'disability_type' => $request->disability_type,
+            'has_chronic_disease' => $request->has_chronic_disease,
+            'war_victim' => $request->war_victim,
+            'income_source' => $request->income_source,
+            'average_income' => $request->average_income,
+            'is_employee' => $request->is_employee,
+            'marital_status' => $request->marital_status,
+        ]);
+    }
+
+
+
+
+        /**
+     * تحديث بيانات المستخدم وتفاصيل الأسرة إذا كانت موجودة.
+     */
+    private function updateBeneficialAndFamilyDetails($id_num, $request)
+    {
+
+        $beneficial = WordFood::where('id_num', $id_num)->first();
+
+        // تحديث بيانات المستفيد
+        $beneficial->update([
+            'full_name' => $request->full_name,
+            'wife_name' => $request->wife_name,
+            'wife_id_num' => $request->wife_id_num,
+            'family_count' => $request->family_count,
+            'marital_status' => $request->marital_status,
+            'mobile' => $request->mobile,
+        ]);
+
+        // تحديث تفاصيل الأسرة
+        FamilyDetailsInfo::where('beneficial_id', $beneficial->id)->update([
             'province' => $request->province,
             'city' => $request->city,
             'housing_complex' => $request->housing_complex,

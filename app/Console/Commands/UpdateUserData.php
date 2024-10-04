@@ -40,6 +40,6 @@ class UpdateUserData extends Command
      */
     public function handle()
     {
-       
+
     }
 }
