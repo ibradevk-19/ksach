@@ -210,10 +210,12 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="document" class="form-label">الوثيقة </label>
                 <select class="form-select" id="document" name="document" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="هوية فلسطينية"> هوية فلسطينية</option>
-                    <option value="جواز سفر ">جواز سفر </option>
-                    <option value="رقم تعريف">رقم تعريف </option>
-                    <option value="وثيقة اردنية">وثيقة اردنية </option>
+                    <option value="palestinian_identity"> هوية فلسطينية</option>
+                    <option value="passport">جواز سفر </option>
+                    <option value="identification_number">رقم تعريف </option>
+                    <option value="jordanian_document">وثيقة اردنية </option>
+                    <option value="other">اخرى</option>
+
                 </select>
             </div>
 
@@ -239,15 +241,15 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="disability_type" class="form-label"> نوع الاعاقة</label>
                 <select class="form-select" id="disability_type" name="disability_type" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="إعاقة بصرية">إعاقة بصرية </option>
-                    <option value=" إعاقة سمعية">إعاقة سمعية  </option>
-                    <option value="no">إعاقة حركية </option>
-                    <option value="no"> إعاقة عقلية</option>
-                    <option value="no">إعاقة نفسية  </option>
-                    <option value="no"> إعاقة نطقية </option>
-                    <option value="no">إعاقة اجتماعية (التوحد أو اضطرابات التواصل)</option>
-                    <option value="no"> إعاقة حسية</option>
-                    <option value="no"> إعاقة متعددة</option>
+                    <option value="visual_impairment">إعاقة بصرية</option>
+                    <option value="hearing_disability">إعاقة سمعية</option>
+                    <option value="movement_disability">إعاقة حركية </option>
+                    <option value="mental_disability"> إعاقة عقلية</option>
+                    <option value="psychological_disability">إعاقة نفسية  </option>
+                    <option value="speech_disability"> إعاقة نطقية </option>
+                    <option value="social_disability">إعاقة اجتماعية (التوحد أو اضطرابات التواصل)</option>
+                    <option value="sensory_impairment"> إعاقة حسية</option>
+                    <option value="multiple_disabilities"> إعاقة متعددة</option>
                 </select>
             </div>
         </div>
@@ -341,8 +343,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_displaced" class="form-label">نازح / مقيم</label>
                 <select class="form-select" id="is_displaced" name="is_displaced" required>
                     <option disabled value="">اختر </option>
-                    <option value="نازح">نازح</option>
-                    <option value="مقيم">مقيم</option>
+                    <option value="displaced">نازح</option>
+                    <option value="resident">مقيم</option>
                 </select>
             </div>
 
@@ -356,8 +358,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_owner" class="form-label">ملك / إجار</label>
                 <select class="form-select" id="is_owner" name="is_owner" required>
                     <option disabled value="">اختر </option>
-                    <option value="ملك">ملك</option>
-                    <option value="إجار">إجار</option>
+                    <option value="property">ملك</option>
+                    <option value="rent">إجار</option>
                 </select>
             </div>
 
@@ -365,25 +367,26 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="housing_type" class="form-label">نوع السكن</label>
                 <select class="form-select" id="housing_type" name="housing_type" required>
                     <option disabled value="">اختر </option>
-                    <option value="ملك">باطون</option>
-                    <option value="زينقو">زينقو</option>
+                    <option value="concrete">باطون</option>
+                    <option value="asbestos_sheets">زينقو</option>
                 </select>
             </div>
             <div class="col-md-3">
                 <label for="war_damage" class="form-label">هل يوجد أضرار حرب 2023</label>
                 <select class="form-select" id="war_damage" name="war_damage" required>
                     <option disabled value="">اختر </option>
-                    <option value="نعم">نعم</option>
-                    <option value="لا">لا</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
                 </select>
             </div>
             <div class="col-md-3">
                 <label for="damage_type" class="form-label">نوع الضرر</label>
                 <select class="form-select" id="damage_type" name="damage_type" >
                     <option disabled value="">اختر </option>
-                    <option value="ضرر كلي">ضرر كلي</option>
-                    <option value="ضرر جزئي">ضرر جزئي</option>
-                    <option value="جزء غير قابل للسكن">جزء غير قابل للسكن</option>
+                    <option value="total_damage">ضرر كلي</option>
+                    <option value="partial_damage">ضرر جزئي</option>
+                    <option value="uninhabitable_part">جزئي غير قابل للسكن</option>
+                    <option value="inhabitable_part">جزئي قابل للسكن</option>
                 </select>
 
 
