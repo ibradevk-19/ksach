@@ -46,6 +46,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <!-- Display the authenticated user's name -->
                             {{ Auth::user()->name }} <!-- اسم المستخدم -->
+
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><hr class="dropdown-divider"></li>
@@ -121,16 +122,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Example row -->
-                            <tr>
-                                <td>1</td>
-                                <td>محمد أحمد</td>
-                                <td>طرد غذائي</td>
-                                <td>11/06/2024</td>
-                                <td>احمد محمد محمود</td>
-                            </tr>
-                            <!-- Add more rows dynamically from database -->
+                            @forelse ($beneficial->deliveryRecordBeneficials as $item)
+                                <tr>
+                                    <td>1</td>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->product->name ?? 'No product available' }}</td>
+                                    <td>{{ $item->created_at->format('Y-m-d') }}</td>
+                                    <td>{{ $beneficial->actor->name ?? 'No actor available' }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">لم يتم العثور على سجلات التسليم</td>
+                                </tr>
+                            @endforelse
                         </tbody>
+
                     </table>
                 </div>
             </div>

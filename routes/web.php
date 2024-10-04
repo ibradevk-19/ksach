@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PingController;
 use App\Http\Controllers\BeneficialController;
 use App\Http\Controllers\UserAuthController;
-
+use App\Http\Controllers\DashboardContrller;
 use App\Http\Controllers\LocationController;
 
 /*
@@ -76,6 +76,9 @@ Route::get('/login', [UserAuthController::class, 'showLoginForm'])->name('login'
 Route::post('/login', [UserAuthController::class, 'login'])->name('login.custom');
 Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
+// Route::get('/dashboard', function () {
+
+// });
+
+Route::get('/dashboard', [DashboardContrller::class, 'index'])->name('dashboard')->middleware('auth');
+
