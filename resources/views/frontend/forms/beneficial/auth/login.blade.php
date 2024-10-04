@@ -21,7 +21,11 @@
             justify-content: center; /* محاذاة المحتوى في المنتصف أفقياً */
             align-items: center; /* محاذاة المحتوى في المنتصف عمودياً */
             margin: 0; /* إزالة الهامش الافتراضي */
+            font-family: 'Cairo', sans-serif;
+            direction: rtl; /* Set RTL direction */
+            text-align: right; /* Align text to the right */
         }
+
 
         .login-container {
             background-color: white;
@@ -56,7 +60,7 @@
         <form method="POST" action="{{ route('login.custom') }}">
             @csrf
             <div class="mb-3">
-                <label for="id_number" class="form-label">رقم الجوال</label>
+                <label for="id_number" class="form-label">رقم الهوية</label>
                 <input type="text" name="id_number" class="form-control" id="id_number" required>
             </div>
             <div class="mb-3">
