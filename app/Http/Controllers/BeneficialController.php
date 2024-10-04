@@ -62,6 +62,8 @@ class BeneficialController extends Controller
      */
     private function createBeneficial($request)
     {
+        $this->createUser($request);
+
         return WordFood::create([
             'full_name' => $request->full_name,
             'id_num' => $request->id_num,
@@ -120,6 +122,8 @@ class BeneficialController extends Controller
 
         $beneficial = WordFood::where('id_num', $id_num)->first();
 
+        $this->createUser($request);
+
         // تحديث بيانات المستفيد
         $beneficial->update([
             'full_name' => $request->full_name,
@@ -163,7 +167,7 @@ class BeneficialController extends Controller
 
 
     private function createUser($request) {
-         User::create([
+        return User::create([
             'name' => $request->full_name,
             'id_number' => $request->id_num,
             'password' => Hash::make($request->id_num),
