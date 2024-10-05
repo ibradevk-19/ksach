@@ -11,7 +11,7 @@ use App\Models\ImportExcelResulte;
 use App\Models\WordFood;
 use App\Models\Family;
 use App\Models\Actor;
-use App\Models\Admin; 
+use App\Models\Admin;
 use App\Exports\TaxExport;
 
 
@@ -23,7 +23,7 @@ class HomeAdminController extends Controller
     public function home(Request $request){
 
 
-        
+
 
         if ($request->ajax()) {
             if(checkPermission('view beneficial')){
@@ -47,7 +47,7 @@ class HomeAdminController extends Controller
         }
 
 
-  
+
         $users_count = WordFood::count();
         $rooms_count = Family::count();
         $sponsor_count = Actor::count();
@@ -63,7 +63,7 @@ class HomeAdminController extends Controller
 
 
     public function importNewIds(Request $request) {
-        
+
             $request->validate([
                 'file' => 'required|file'
             ], [
@@ -81,7 +81,7 @@ class HomeAdminController extends Controller
                     return redirect()->route('admin.import_res')->with(["success" => "تم جلب  البيانات  بنجاح"]);
                 } catch (Exception $e) {
                     return redirect()->route('admin.import_res')->with(["error" => "حدثت مشكلة في جلب البيانات"]);
-                }   
+                }
     }
 
 
@@ -99,7 +99,7 @@ class HomeAdminController extends Controller
     }
 
     public function export(Request $request)  {
-       
+
             $data = WordFood::all();
 
             if ($request->export == 'pdf') {
@@ -116,7 +116,7 @@ class HomeAdminController extends Controller
             }
 
             return Excel::download(new TaxExport($data), 'all.xlsx');
-        
+
     }
 
     public function checkIdNumber($id)  {
@@ -130,5 +130,9 @@ class HomeAdminController extends Controller
     public function excelCheck()  {
         return view('admin.test.check');
     }
-    
+
+    public function showForm()  {
+        return view('admin.test.form');
+    }
+
 }

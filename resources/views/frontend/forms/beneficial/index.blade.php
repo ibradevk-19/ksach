@@ -240,7 +240,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="disability_type" class="form-label"> نوع الاعاقة</label>
                 <select class="form-select" id="disability_type" name="disability_type" >
-                    <option value="" disabled selected>اختر  </option>
+                    <option value=""  selected>اختر  </option>
                     <option value="visual_impairment">إعاقة بصرية</option>
                     <option value="hearing_disability">إعاقة سمعية</option>
                     <option value="movement_disability">إعاقة حركية </option>
@@ -259,7 +259,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="has_chronic_disease" class="form-label">لديه امراض مزمنه  </label>
                 <select class="form-select" id="has_chronic_disease" name="has_chronic_disease" required>
-                    <option value="" disabled selected>اختر  </option>
+                    <option value=""  selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no"> لا </option>
                 </select>
@@ -268,7 +268,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="war_victim" class="form-label">هل  يوجد فقيد حرب </label>
                 <select class="form-select" id="war_victim" name="war_victim" required>
-                    <option value="" disabled selected>اختر  </option>
+                    <option value=""  selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
                 </select>
@@ -277,7 +277,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="income_source" class="form-label">هل يوجد مصدر دخل   </label>
                 <select class="form-select" id="income_source" name="income_source" required>
-                    <option value="" disabled selected>اختر  </option>
+                    <option value=""  selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
                 </select>
@@ -286,7 +286,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="is_employee" class="form-label"> هل المعيل موظف ؟ </label>
                 <select class="form-select" id="is_employee" name="is_employee" required>
-                    <option value="" disabled selected>اختر  </option>
+                    <option value=""  selected>اختر  </option>
                     <option value="yes"> نعم </option>
                     <option value="no">لا  </option>
                 </select>
@@ -342,7 +342,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="is_displaced" class="form-label">نازح / مقيم</label>
                 <select class="form-select" id="is_displaced" name="is_displaced" required>
-                    <option disabled value="">اختر </option>
+                    <option  value="">اختر </option>
                     <option value="displaced">نازح</option>
                     <option value="resident">مقيم</option>
                 </select>
@@ -357,7 +357,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="is_owner" class="form-label">ملك / إجار</label>
                 <select class="form-select" id="is_owner" name="is_owner" required>
-                    <option disabled value="">اختر </option>
+                    <option  value="">اختر </option>
                     <option value="property">ملك</option>
                     <option value="rent">إجار</option>
                 </select>
@@ -366,7 +366,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="housing_type" class="form-label">نوع السكن</label>
                 <select class="form-select" id="housing_type" name="housing_type" required>
-                    <option disabled value="">اختر </option>
+                    <option  value="">اختر </option>
                     <option value="concrete">باطون</option>
                     <option value="asbestos_sheets">زينقو</option>
                 </select>
@@ -374,7 +374,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="war_damage" class="form-label">هل يوجد أضرار حرب 2023</label>
                 <select class="form-select" id="war_damage" name="war_damage" required>
-                    <option disabled value="">اختر </option>
+                    <option  value="">اختر </option>
                     <option value="yes">نعم</option>
                     <option value="no">لا</option>
                 </select>
@@ -382,7 +382,7 @@ input[type="number"]::-webkit-outer-spin-button {
             <div class="col-md-3">
                 <label for="damage_type" class="form-label">نوع الضرر</label>
                 <select class="form-select" id="damage_type" name="damage_type" >
-                    <option disabled value="">اختر </option>
+                    <option  value="">اختر </option>
                     <option value="total_damage">ضرر كلي</option>
                     <option value="partial_damage">ضرر جزئي</option>
                     <option value="uninhabitable_part">جزئي غير قابل للسكن</option>
