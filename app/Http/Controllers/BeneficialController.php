@@ -23,6 +23,7 @@ class BeneficialController extends Controller
 
     public function store(StoreBeneficialRequest $request)
     {
+
         // تحقق مما إذا كانت بيانات العائلة موجودة مسبقاً
         if ($this->isBeneficialExists($request->id_num,$request->wife_id_num)) {
 
