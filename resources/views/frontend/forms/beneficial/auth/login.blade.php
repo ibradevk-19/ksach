@@ -40,7 +40,7 @@
         }
 
         .logo {
-            width: 100px; /* عرض الشعار */
+            width: 150px; /* عرض الشعار */
             margin-bottom: 20px; /* المسافة أسفل الشعار */
         }
 
@@ -55,8 +55,8 @@
     <div class="login-container">
         <!-- Add Logo and Institution Name -->
         <div class="text-center">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="شعار المؤسسة" class="logo">
-            <div class="institution-name">المركز السعودي للثقافة والثرات</div>
+            <img src="{{ asset('/frontend/assets/logo.svg') }}" alt="شعار المؤسسة" class="logo">
+            {{-- <div class="institution-name">المركز السعودي للثقافة والثرات</div> --}}
         </div>
         <h3 class="text-center">تسجيل الدخول</h3>
         <form method="POST" action="{{ route('login.custom') }}">

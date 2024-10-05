@@ -6,6 +6,9 @@ use App\Models\WordFood;
 use App\Models\ImportExcelResulte;
 use App\Models\Family;
 use App\Models\Actor;
+use App\Models\Province;
+use App\Models\City;
+use App\Models\HousingComplex;
 use App\Models\FamilyDetailsInfo;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -138,15 +141,18 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
 
     private function getId($type,$val) {
         if($type == 'province') {
-            return Province::where('name',$val)->first()->id;
+            $province = Province::where('name',$val)->first();
+            return $province['id'];
         }
 
         if($type == 'city') {
-            return City::where('name',$val)->first()->id;
+            $city = City::where('name',$val)->first()->id;
+            return $city['id'];
         }
 
         if($type == 'housing_complex') {
-            return HousingComplex::where('name',$val)->first()->id;
+            $housingComplex = HousingComplex::where('name',$val)->first()->id;
+            return $housingComplex['id'];
         }
     }
 }
