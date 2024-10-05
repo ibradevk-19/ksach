@@ -16,4 +16,7 @@ class DashboardContrller extends Controller
             'beneficial' => $beneficial,
         ]);
     }
+
+
+
 }

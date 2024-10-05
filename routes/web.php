@@ -12,6 +12,9 @@ use App\Http\Controllers\BeneficialController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\DashboardContrller;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PasswordController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -80,5 +83,12 @@ Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
 
 // });
 
-Route::get('/dashboard', [DashboardContrller::class, 'index'])->name('dashboard')->middleware('auth');
 
+
+
+Route::middleware(['auth', 'check.password.change'])->group(function () {
+    Route::get('/dashboard', [DashboardContrller::class, 'index'])->name('dashboard');
+    // Routes الخاصة بالتطبيق
+    Route::get('/password/change', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
+    Route::post('/password/update', [PasswordController::class, 'updatePassword'])->name('password.update');
+});

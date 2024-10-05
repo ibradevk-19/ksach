@@ -73,6 +73,7 @@ class Kernel extends HttpKernel
         'CheckIfSuperAdmin' => \App\Http\Middleware\CheckIfSuperAdmin::class,
         'CheckIfActive' => \App\Http\Middleware\CheckIfActive::class,
         'AdminEditRole' => \App\Http\Middleware\AdminEditRole::class,
+        'check.password.change' => \App\Http\Middleware\CheckPasswordChange::class,
 
 
         'UserAuth' => \App\Http\Middleware\UserAuth::class,

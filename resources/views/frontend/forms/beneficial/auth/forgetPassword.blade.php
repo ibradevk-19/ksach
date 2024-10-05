@@ -1,82 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <title>تغيير كلمة المرور - المركز السعودي</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+    <link href="{{ asset('assets/css/bootstrap-rtl.min.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            background-color: #f8f9fa;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Cairo', sans-serif;
+        }
 
-        <meta charset="utf-8" />
-        <title>إعادة تعيين كلمة المرور</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesdesign" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+        .change-password-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
 
-        <!-- Bootstrap Css -->
-        <link href={{ asset("assets/libs/jqvmap/jqvmap.min.css")}} rel="stylesheet" />
-        <link href="{{asset('assets/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link href="{{asset('assets/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+        .text-center {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
 
-        <link href={{ asset("assets/css/custom-style.css")}} id="custom-style" rel="stylesheet" type="text/css" />
-
-        <link href="{{asset('assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <!-- App Css-->
-        <link href="{{asset('assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
-
-    </head>
-
-    <body class="bg-pattern">
-        <div class="bg-overlay"></div>
-        <div class="account-pages my-5 pt-5">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-4 col-lg-6 col-md-8">
-                        <div class="card">
-                            <div class="card-body p-4">
-                                <div class="">
-
-                                    <h4 class="font-size-18 text-muted mt-2 text-center">إعادة تعيين كلمة المرور</h4>
-                                    <form class="form-horizontal" action="{{route('forget.password.post')}}" method="POST">
-                                        @csrf
-                                     @include('includes.message')
-
-                                        <div class="row">
-                                            <div class="col-md-12">
-
-
-                                                <div class="mt-4">
-                                                    <label class="form-label" for="useremail">البريد الإلكتروني</label>
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="البريد الإلكتروني">
-                                                </div>
-                                                <div class="d-grid mt-4">
-                                                    <button class="btn btn-primary waves-effect waves-light" type="submit">إرسال</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-5 text-center">
-                            <p class="text-white-50"><a href="{{route('login.get')}}" class="fw-medium text-primary"> صفحة تسجيل الدخول  </a> </p>
-                            <p class="text-white-50">© <script>document.write(new Date().getFullYear())</script> المركز السعودي  </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
+<body>
+    <div class="change-password-container">
+        <h3 class="text-center">تغيير كلمة المرور</h3>
+        <form method="POST" action="{{ route('password.update') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="password" class="form-label">كلمة المرور الجديدة</label>
+                <input type="password" name="password" class="form-control" id="password" required>
             </div>
-        </div>
-        <!-- end Account pages -->
+            <div class="mb-3">
+                <label for="password_confirmation" class="form-label">تأكيد كلمة المرور</label>
+                <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">تحديث كلمة المرور</button>
+        </form>
+    </div>
+</body>
 
-        <!-- JAVASCRIPT -->
-        <script src="{{asset('assets/libs/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-        <script src="{{asset('assets/libs/metismenu/metisMenu.min.js')}}"></script>
-        <script src="{{asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{asset('assets/libs/node-waves/waves.min.js')}}"></script>
-
-        <script src="{{asset('assets/js/app.js')}}"></script>
-
-    </body>
 </html>

@@ -173,6 +173,7 @@ class BeneficialController extends Controller
             'name' => $request->full_name,
             'id_number' => $request->id_num,
             'password' => Hash::make($request->id_num),
+            'first_login' => true,
          ]);
     }
 

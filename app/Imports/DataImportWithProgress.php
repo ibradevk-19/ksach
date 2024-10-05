@@ -114,6 +114,7 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'name' => $attribute[1],
                             'id_number' => $attribute[2],
                             'password' => Hash::make($attribute[2]),
+                            'first_login' => true,
                         ]);
 
                     }
