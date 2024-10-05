@@ -122,6 +122,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                             @forelse ($beneficial->deliveryRecordBeneficials as $item)
                                 <tr>
                                     <td>1</td>

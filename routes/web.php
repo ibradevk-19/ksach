@@ -90,5 +90,5 @@ Route::middleware(['auth', 'check.password.change'])->group(function () {
     Route::get('/dashboard', [DashboardContrller::class, 'index'])->name('dashboard');
     // Routes الخاصة بالتطبيق
     Route::get('/password/change', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
-    Route::post('/password/update', [PasswordController::class, 'updatePassword'])->name('password.update');
 });
+Route::post('/password/update', [PasswordController::class, 'updatePassword'])->name('password.update');
