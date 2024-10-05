@@ -239,7 +239,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
             <div class="col-md-3">
                 <label for="disability_type" class="form-label"> نوع الاعاقة</label>
-                <select class="form-select" id="disability_type" name="disability_type" required>
+                <select class="form-select" id="disability_type" name="disability_type" >
                     <option value="" disabled selected>اختر  </option>
                     <option value="visual_impairment">إعاقة بصرية</option>
                     <option value="hearing_disability">إعاقة سمعية</option>
@@ -297,7 +297,7 @@ input[type="number"]::-webkit-outer-spin-button {
         <div class="row mb-3">
             <div class="col-md-3">
                 <label for="average_income" class="form-label">متوسط الدخل </label>
-                <input type="number" class="form-control" id="average_income" name="average_income" required>
+                <input type="number" class="form-control" id="average_income" name="average_income" >
             </div>
 
             <div class="col-md-3">
