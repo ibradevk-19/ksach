@@ -8,6 +8,8 @@ use App\Models\Family;
 use App\Models\Actor;
 use App\Models\Province;
 use App\Models\City;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use App\Models\HousingComplex;
 use App\Models\FamilyDetailsInfo;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -108,6 +110,12 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'marital_status' =>  $this->ArToEn($attribute[23])  ?? '-',
                         ]);
 
+                        User::create([
+                            'name' => $attribute[1],
+                            'id_number' => $attribute[2],
+                            'password' => Hash::make($attribute[2]),
+                        ]);
+
                     }
 
 
@@ -195,10 +203,22 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
             'other' => 'اخرى',
             'single' => 'أعزب',
             'married' => 'متزوج',
+            'married' => 'متزوجة',
             'divorced' => 'مطلق',
-            'widowed' => 'أرمل',
+            'divorced'=> 'مطلقة',
+            'widowed' => 'ارمل',
+            'widowed' => 'ارملة',
             'breadwinner' => 'بلا معيل',
         ];
+
+
+
+
+
+
+
+
+
 
         // Search for the value and return the corresponding key
         $key = array_search($val, $array);
