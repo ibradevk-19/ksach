@@ -26,7 +26,9 @@
             text-align: right; /* Align text to the right */
         }
 
-
+        .text-center {
+            font-family: 'Cairo', sans-serif;
+        }
         .login-container {
             background-color: white;
             padding: 30px;
