@@ -90,6 +90,7 @@ Route::resource('categories', CategoryController::class);
 Route::resource('providers', ProviderController::class);
 Route::resource('period', ProductController::class);
 
+Route::get('new-checker', [HomeAdminController::class, 'showForm']);
 
 Route::resource('units', UnitController::class);
 Route::get('delivry/create', [DeliveryRecordController::class, 'create'])->name('delivry.create');
