@@ -223,8 +223,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_breadwinner_disabled" class="form-label">هل المعيل مصاب حرب </label>
                 <select class="form-select" id="is_breadwinner_disabled" name="is_breadwinner_disabled" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="yes"> نعم </option>
-                    <option value="no">لا  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
                 </select>
             </div>
 
@@ -232,8 +232,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="has_disability" class="form-label">هل المعيل ذو اعاقة </label>
                 <select class="form-select" id="has_disability" name="has_disability" required>
                     <option value="" disabled selected>اختر  </option>
-                    <option value="yes"> نعم </option>
-                    <option value="no">لا  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
                 </select>
             </div>
 
@@ -260,8 +260,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="has_chronic_disease" class="form-label">لديه امراض مزمنه  </label>
                 <select class="form-select" id="has_chronic_disease" name="has_chronic_disease" required>
                     <option value=""  selected>اختر  </option>
-                    <option value="yes"> نعم </option>
-                    <option value="no"> لا </option>
+                    <option value="1"> نعم </option>
+                    <option value="0"> لا </option>
                 </select>
             </div>
 
@@ -269,8 +269,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="war_victim" class="form-label">هل  يوجد فقيد حرب </label>
                 <select class="form-select" id="war_victim" name="war_victim" required>
                     <option value=""  selected>اختر  </option>
-                    <option value="yes"> نعم </option>
-                    <option value="no">لا  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
                 </select>
             </div>
 
@@ -278,8 +278,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="income_source" class="form-label">هل يوجد مصدر دخل   </label>
                 <select class="form-select" id="income_source" name="income_source" required>
                     <option value=""  selected>اختر  </option>
-                    <option value="yes"> نعم </option>
-                    <option value="no">لا  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
                 </select>
             </div>
 
@@ -287,8 +287,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_employee" class="form-label"> هل المعيل موظف ؟ </label>
                 <select class="form-select" id="is_employee" name="is_employee" required>
                     <option value=""  selected>اختر  </option>
-                    <option value="yes"> نعم </option>
-                    <option value="no">لا  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
                 </select>
             </div>
         </div>
@@ -343,8 +343,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_displaced" class="form-label">نازح / مقيم</label>
                 <select class="form-select" id="is_displaced" name="is_displaced" required>
                     <option  value="">اختر </option>
-                    <option value="displaced">نازح</option>
-                    <option value="resident">مقيم</option>
+                    <option value="0">نازح</option>
+                    <option value="1">مقيم</option>
                 </select>
             </div>
 
@@ -375,8 +375,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="war_damage" class="form-label">هل يوجد أضرار حرب 2023</label>
                 <select class="form-select" id="war_damage" name="war_damage" required>
                     <option  value="">اختر </option>
-                    <option value="yes">نعم</option>
-                    <option value="no">لا</option>
+                    <option value="1">نعم</option>
+                    <option value="0">لا</option>
                 </select>
             </div>
             <div class="col-md-3">
