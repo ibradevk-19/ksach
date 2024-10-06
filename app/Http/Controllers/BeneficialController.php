@@ -169,6 +169,10 @@ class BeneficialController extends Controller
 
 
     private function createUser($request) {
+        $user = User::where('id_number',$request->id_num)->first();
+        if($user){
+            return ;
+        }
         return User::create([
             'name' => $request->full_name,
             'id_number' => $request->id_num,

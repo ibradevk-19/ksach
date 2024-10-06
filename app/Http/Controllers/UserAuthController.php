@@ -23,6 +23,10 @@ class UserAuthController extends Controller
         $request->validate([
             'id_number' => 'required|exists:users,id_number',
             'password' => 'required',
+        ], [
+            'id_number.required' => 'رقم الهوية مطلوب.',
+            'id_number.exists' => 'رقم الهوية غير موجود في سجلاتنا.',
+            'password.required' => 'كلمة المرور مطلوبة.',
         ]);
 
         // البحث عن المستخدم بناءً على رقم الجوال
@@ -39,8 +43,8 @@ class UserAuthController extends Controller
 
         // في حالة فشل تسجيل الدخول
         return back()->withErrors([
-            'id_number' => 'The provided credentials do not match our records.',
-        ]);
+            'id_number' => 'بيانات الهوية أو كلمة المرور غير صحيحة.',
+        ])->withInput();
     }
 
     public function logout()

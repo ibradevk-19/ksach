@@ -59,17 +59,30 @@
             {{-- <div class="institution-name">المركز السعودي للثقافة والثرات</div> --}}
         </div>
         <h3 class="text-center">تسجيل الدخول</h3>
+        @if ($errors->any())
+        <div class="alert alert-danger mt-3">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <form method="POST" action="{{ route('login.custom') }}">
             @csrf
             <div class="mb-3">
                 <label for="id_number" class="form-label">رقم الهوية</label>
-                <input type="text" name="id_number" class="form-control" id="id_number" required>
+                <input type="text" name="id_number" class="form-control" id="id_number" value="{{ old('id_number') }}" required>
+
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">كلمة المرور</label>
                 <input type="password" name="password" class="form-control" id="password" required>
+
             </div>
             <button type="submit" class="btn btn-primary w-100">تسجيل الدخول</button>
+
+
         </form>
     </div>
 </body>
