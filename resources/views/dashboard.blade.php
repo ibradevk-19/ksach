@@ -80,7 +80,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <h5 class="card-title">تعديل البيانات الاسرى </h5>
-                        <a href="#" class="btn btn-primary">تعديل </a>
+                        <a href="{{ route('dashboard.user.index') }}" class="btn btn-primary">تعديل </a>
                     </div>
                 </div>
             </div>

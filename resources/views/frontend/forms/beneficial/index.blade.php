@@ -358,8 +358,8 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_owner" class="form-label">ملك / إجار</label>
                 <select class="form-select" id="is_owner" name="is_owner" required>
                     <option  value="">اختر </option>
-                    <option value="property">ملك</option>
-                    <option value="rent">إجار</option>
+                    <option value="1">ملك</option>
+                    <option value="0">إجار</option>
                 </select>
             </div>
 

@@ -109,13 +109,16 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'is_employee' => $attribute[32] == 'نعم' ? 1 : 0,
                             'marital_status' =>  $this->ArToEn($attribute[23])  ?? '-',
                         ]);
+                        try {
+                            User::create([
+                                'name' => $attribute[1],
+                                'id_number' => $attribute[2],
+                                'password' => Hash::make($attribute[2]),
+                            ]);
+                        } catch (\Throwable $th) {
+                            //throw $th;
+                        }
 
-                        User::create([
-                            'name' => $attribute[1],
-                            'id_number' => $attribute[2],
-                            'password' => Hash::make($attribute[2]),
-                            'first_login' => true,
-                        ]);
 
                     }
 
@@ -189,8 +192,11 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
             'social_disability' => 'إعاقة اجتماعية (التوحد أو اضطرابات التواصل)',
             'sensory_impairment' => 'إعاقة حسية',
             'multiple_disabilities' => 'إعاقة متعددة',
-            'property' => 'ملك',
-            'rent' => 'إجار',
+            '1' => 'ملك',
+            '1' => 'ملكية عائلية',
+            '1' => 'ملكية خاصة',
+            '0' => 'عقد إيجار',
+            '0' => 'إجار',
             'concrete' => 'باطون',
             'asbestos_sheets' => 'زينقو',
             'total_damage' => 'ضرر كلي',
@@ -211,15 +217,6 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
             'widowed' => 'ارملة',
             'breadwinner' => 'بلا معيل',
         ];
-
-
-
-
-
-
-
-
-
 
         // Search for the value and return the corresponding key
         $key = array_search($val, $array);
