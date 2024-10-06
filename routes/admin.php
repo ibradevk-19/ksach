@@ -67,7 +67,7 @@ Route::get('beneficial/create-form', [BeneficialController::class,'createNew']);
 // _______________________________
 Route::get('profile', [AdminController::class, 'Profile'])->name('admin.profile.view');
 Route::post('profile_store', [AdminController::class, 'Profile_update'])->name('admin.profile.store');
-Route::get('import', [HomeAdminController::class, 'import'])->name('admin.import');
+// Route::get('import', [HomeAdminController::class, 'import'])->name('admin.import');
 Route::post('import', [HomeAdminController::class, 'importNewIds'])->name('admin.importNewIds');
 
 Route::get('import-res', [HomeAdminController::class, 'importRes'])->name('admin.import_res');
@@ -90,7 +90,7 @@ Route::resource('categories', CategoryController::class);
 Route::resource('providers', ProviderController::class);
 Route::resource('period', ProductController::class);
 
-Route::get('new-checker', [HomeAdminController::class, 'showForm']);
+Route::get('import', [HomeAdminController::class, 'showForm'])->name('admin.import');;
 
 Route::resource('units', UnitController::class);
 Route::get('delivry/create', [DeliveryRecordController::class, 'create'])->name('delivry.create');

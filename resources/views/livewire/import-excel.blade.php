@@ -7,13 +7,28 @@
         @endif
 
         <form wire:submit.prevent="import">
-            <input type="file" wire:model="file">
+            <div class="mb-3 row">
+            <div class="col-md-3">
+                <select wire:model="actor_id" class="form-select">
+                    <option value="">اختار المندوب</option>
+                    @foreach($actors as $actor)
+                        <option value="{{ $actor->id }}">{{ $actor->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <div class="col-md-3">
+                <input type="file" wire:model="file">
+            </div>
 
             @error('file')
                 <span class="error">{{ $message }}</span>
             @enderror
-
+        </div>
             <button type="submit">Import Data</button>
+
+
         </form>
 
         <div wire:loading wire:target="file">

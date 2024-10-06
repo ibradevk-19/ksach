@@ -17,18 +17,20 @@ class ImportExcelJob implements ShouldQueue
     protected $filePath;
     protected $component;
     protected $totalRows;
+    protected $actor_id;
 
-    public function __construct($filePath, $component, $totalRows)
+    public function __construct($filePath, $component, $totalRows,$actor_id)
     {
         $this->filePath = $filePath;
         $this->component = $component;
         $this->totalRows = $totalRows;
+        $this->actor_id = $actor_id;
     }
 
     public function handle()
     {
         // استيراد البيانات مع تحديث نسبة التقدم
-        Excel::import(new DataImportWithProgress($this->component, $this->totalRows), storage_path('app/' . $this->filePath));
+        Excel::import(new DataImportWithProgress($this->component, $this->totalRows,$this->actor_id), storage_path('app/' . $this->filePath));
         // استخدام `storage_path` للحصول على المسار الصحيح للملف
     }
 }

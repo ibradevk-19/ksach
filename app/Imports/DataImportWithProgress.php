@@ -21,11 +21,13 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
     protected $component;
     protected $totalRows;
     protected $processedRows = 0;
+    protected $actor_id;
 
-    public function __construct($component, $totalRows)
+    public function __construct($component, $totalRows,$actor_id)
     {
         $this->component = $component;
         $this->totalRows = $totalRows; // إجمالي عدد الصفوف في الملف
+        $this->actor_id = $actor_id;
     }
 
     public function collection(Collection $rows)
@@ -74,7 +76,7 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                         'marital_status' => 1,
                         'mobile' => $attribute[5],
                         'family_id' => Family::where('code', $attribute[8])->first()->id ?? null,
-                        'actor_id' => Actor::where('id', $attribute[9])->first()->id ?? null,
+                        'actor_id' => $this->actor_id ?? null,
                         'status' => 2 // لم يستلم
                     ]);
 

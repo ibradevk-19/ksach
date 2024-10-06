@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use App\Jobs\ImportExcelJob;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
+use App\Models\Actor;
 
 class ImportExcel extends Component
 {
@@ -14,6 +15,7 @@ class ImportExcel extends Component
 
     public $file;
     public $progress = 0;
+    public $actor_id;
 
     public function updatedFile()
     {
@@ -40,7 +42,7 @@ class ImportExcel extends Component
         $this->reset('file'); // هذا يزيل `TemporaryUploadedFile` من المكون Livewire
 
         // إرسال Job لاستيراد البيانات مع تمرير مسار الملف وعدد الصفوف
-        ImportExcelJob::dispatch($filePath, $this, $totalRowsCount);
+        ImportExcelJob::dispatch($filePath, $this, $totalRowsCount,$this->actor_id);
 
         session()->flash('message', 'Import job dispatched! Check back later for progress.');
 
@@ -55,6 +57,10 @@ class ImportExcel extends Component
 
     public function render()
     {
-        return view('livewire.import-excel');
+        $actors = Actor::all();
+
+        return view('livewire.import-excel')->with([
+            'actors' => $actors
+        ]);
     }
 }
