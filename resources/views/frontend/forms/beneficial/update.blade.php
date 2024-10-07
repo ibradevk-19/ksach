@@ -262,7 +262,7 @@
             <div class="row mb-3">
                 <div class="col-md-3">
                     <label for="average_income" class="form-label">متوسط الدخل </label>
-                    <input type="number" value="{{ $beneficial->familyDetailsInfo->average_income }}" class="form-control" id="average_income" name="average_income" >
+                    <input type="number" value="{{ $beneficial->familyDetailsInfo?->average_income }}" class="form-control" id="average_income" name="average_income" >
                 </div>
 
                 <div class="col-md-3">
