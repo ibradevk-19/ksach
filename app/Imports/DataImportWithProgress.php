@@ -43,7 +43,6 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                 continue;
             }
 
-
             if ($this->isEmptyRow($attribute)) {
                 continue; // تخطي الصف الفارغ
             }
@@ -90,8 +89,8 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'neighborhood' => $attribute[9],
                             'street' => $attribute[10],
                             'nearest_landmark' => $attribute[11],
-                            'is_displaced' => $attribute[12] == 'نازح' ? 0 : 1,
-                            'is_owner' => $this->ArToEn($attribute[13])  ?? '-',
+                            'is_displaced' => trim($attribute[12]) == 'نازح' ? 0 : 1,
+                            'is_owner' =>  $this->ArToEn(trim($attribute[13]))  ?? '-',
                             'housing_type' => $this->ArToEn($attribute[14])  ?? '-',
                             'war_damage' => $attribute[15] == 'نعم' ? 1 : 0,
                             'damage_type' => $this->ArToEn($attribute[16]),
@@ -109,7 +108,7 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'income_source' => $attribute[30]  == 'نعم' ? 1 : 0,
                             'average_income' => $attribute[31] ?? 0,
                             'is_employee' => $attribute[32] == 'نعم' ? 1 : 0,
-                            'marital_status' =>  $this->ArToEn($attribute[23])  ?? '-',
+                            'marital_status' =>  $this->ArToEn(trim($attribute[23]))  ?? '-',
                         ]);
                         try {
                             User::create([
@@ -221,7 +220,7 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
         ];
 
         // Search for the value and return the corresponding key
-        $key = array_search($val, $array);
+        $key = array_search(trim($val), $array);
         return $key !== false ? $key : null;
 
 

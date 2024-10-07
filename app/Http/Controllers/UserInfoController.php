@@ -26,53 +26,55 @@ class UserInfoController extends Controller
     }
 
 
-    public function update(Request $requset) {
+    public function update(Request $request) {
         $user = Auth::user();
 
         $beneficial = WordFood::where('id_num', $user->id_number)->first();
 
         if($beneficial){
-            // $beneficial->update([
-            //     'full_name' => $requset->full_name,
-            //     'id_num' => $requset->id_num,
-            //     'wife_name' => $requset->wife_name,
-            //     'wife_id_num' => $requset->wife_id_num,
-            //     'family_count' => $requset->family_count,
-            //     'marital_status' => 1,
-            //     'mobile' => $requset->mobile,
-            // ]);
-            $info = FamilyDetailsInfo::where('beneficial_id', $beneficial->id)->first();
-            if($info){
-                $info->update([
-                    'beneficial_id' => $beneficial->id,
-                    'province' =>  $requset->province,
-                    'city' => $requset->city,
-                    'housing_complex' => $requset->housing_complex,
-                    'neighborhood' => $requset->neighborhood,
-                    'street' => $requset->street,
-                    'nearest_landmark' => $requset->nearest_landmark,
-                    'is_displaced' => $requset->is_displaced,
-                    'is_owner' => $requset->is_owner,
-                    'housing_type' => $requset->housing_type,
-                    'war_damage' => $requset->war_damage,
-                    'damage_type' => $requset->damage_type,
-                    'male_count' => $requset->male_count,
-                    'female_count' => $requset->female_count,
-                    'children_under_2' => $requset->children_under_2,
-                    'children_under_3' => $requset->children_under_3,
-                    'children_5_to_16' => $requset->children_5_to_16,
-                    'document' => $requset->document,
-                    'is_breadwinner_disabled' => $requset->is_breadwinner_disabled,
-                    'has_disability' => $requset->has_disability,
-                    'disability_type' => $requset->disability_type,
-                    'has_chronic_disease' => $requset->has_chronic_disease,
-                    'war_victim' => $requset->war_victim,
-                    'income_source' => $requset->income_source,
-                    'average_income' => $requset->average_income,
-                    'is_employee' => $requset->is_employee,
-                    'marital_status' => $requset->marital_status,
-                ]);
-            }
+
+            // تحديث بيانات المستفيد
+            $beneficial->update([
+                'family_count' => $request->family_count,
+                'marital_status' => $request->marital_status,
+                'mobile' => $request->mobile,
+            ]);
+
+
+
+            // Create or update family details
+            FamilyDetailsInfo::updateOrCreate(
+                ['beneficial_id' => $beneficial->id], // criteria for finding the record
+                [
+                    'province' => $request->province,
+                    'city' => $request->city,
+                    'housing_complex' => $request->housing_complex,
+                    'neighborhood' => $request->neighborhood,
+                    'street' => $request->street,
+                    'nearest_landmark' => $request->nearest_landmark,
+                    'is_displaced' => $request->is_displaced,
+                    'is_owner' => $request->is_owner,
+                    'housing_type' => $request->housing_type,
+                    'war_damage' => $request->war_damage,
+                    'damage_type' => $request->damage_type,
+                    'male_count' => $request->male_count,
+                    'female_count' => $request->female_count,
+                    'children_under_2' => $request->children_under_2,
+                    'children_under_3' => $request->children_under_3,
+                    'children_5_to_16' => $request->children_5_to_16,
+                    'document' => $request->document,
+                    'is_breadwinner_disabled' => $request->is_breadwinner_disabled,
+                    'has_disability' => $request->has_disability,
+                    'disability_type' => $request->disability_type ?? '-',
+                    'has_chronic_disease' => $request->has_chronic_disease,
+                    'war_victim' => $request->war_victim,
+                    'income_source' => $request->income_source ?? '0',
+                    'average_income' => $request->average_income ?? 0,
+                    'is_employee' => $request->is_employee ?? '0',
+                    'marital_status' => $request->marital_status,
+                ]
+            );
+
 
             return  redirect()->route('dashboard')->with('success', 'تم حفظ البيانات بنجاح');
 
