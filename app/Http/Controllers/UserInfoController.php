@@ -15,7 +15,7 @@ class UserInfoController extends Controller
     public function index() {
         $provinces = Province::all();
         $user = Auth::user();
-        $beneficial = WordFood::with('actor','familyDetailsInfo','deliveryRecordBeneficials','deliveryRecordBeneficials.product')->where('id_num',$user->id_number)->first();
+        return $beneficial = WordFood::with('actor','familyDetailsInfo','deliveryRecordBeneficials','deliveryRecordBeneficials.product')->where('id_num',$user->id_number)->first();
 
         return view('frontend.forms.beneficial.update')->with([
             'provinces' => $provinces,
