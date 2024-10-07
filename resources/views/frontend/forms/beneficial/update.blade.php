@@ -126,11 +126,11 @@
                     <select class="form-select" id="marital_status" name="marital_status" required>
                         <option value="" disabled selected>اختر الحالة الاجتماعية</option>
 
-                        <option @if ($beneficial->familyDetailsInfo->marital_status == 'single') selected @endif value="single">أعزب</option>
-                        <option @if ($beneficial->familyDetailsInfo->marital_status == 'married') selected @endif value="married">متزوج</option>
-                        <optionv @if ($beneficial->familyDetailsInfo->marital_status == 'divorced') selected @endif value="divorced">مطلق</option>
-                        <option @if ($beneficial->familyDetailsInfo->marital_status == 'widowed') selected @endif value="widowed">أرمل</option>
-                        <option @if ($beneficial->familyDetailsInfo->marital_status == 'breadwinner') selected @endif value="breadwinner">بلا معيل</option>
+                        <option @if ($beneficial->familyDetailsInfo?->marital_status == 'single') selected @endif value="single">أعزب</option>
+                        <option @if ($beneficial->familyDetailsInfo?->marital_status == 'married') selected @endif value="married">متزوج</option>
+                        <optionv @if ($beneficial->familyDetailsInfo?->marital_status == 'divorced') selected @endif value="divorced">مطلق</option>
+                        <option @if ($beneficial->familyDetailsInfo?->marital_status == 'widowed') selected @endif value="widowed">أرمل</option>
+                        <option @if ($beneficial->familyDetailsInfo?->marital_status == 'breadwinner') selected @endif value="breadwinner">بلا معيل</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -143,29 +143,29 @@
                 </div>
                 <div class="col-md-3">
                     <label for="mobile" class="form-label">عدد الذكور </label>
-                    <input type="number" value="{{ $beneficial->familyDetailsInfo->male_count }}" class="form-control" id="male_count" name="male_count" required>
+                    <input type="number" value="{{ $beneficial->familyDetailsInfo?->male_count }}" class="form-control" id="male_count" name="male_count" required>
                 </div>
             </div>
             <div class="row mb-3">
 
                 <div class="col-md-3">
                     <label for="female_count" class="form-label"> عدد الاناث </label>
-                    <input type="number" value="{{ $beneficial->familyDetailsInfo->female_count }}" class="form-control" id="female_count" name="female_count" required>
+                    <input type="number" value="{{ $beneficial->familyDetailsInfo?->female_count }}" class="form-control" id="female_count" name="female_count" required>
                 </div>
 
                 <div class="col-md-3">
                     <label for="children_under_2" class="form-label">عدد الاطفال اقل من سنتين</label>
-                    <input type="number" class="form-control" value="{{ $beneficial->familyDetailsInfo->children_under_2 }}"  id="children_under_2" name="children_under_2" required>
+                    <input type="number" class="form-control" value="{{ $beneficial->familyDetailsInfo?->children_under_2 }}"  id="children_under_2" name="children_under_2" required>
                 </div>
 
                 <div class="col-md-3">
                     <label for="children_under_3" class="form-label">عدد اطفال اقل من 3 سنوات </label>
-                    <input type="number" class="form-control" value="{{ $beneficial->familyDetailsInfo->children_under_3 }}" id="children_under_3" name="children_under_3" required>
+                    <input type="number" class="form-control" value="{{ $beneficial->familyDetailsInfo?->children_under_3 }}" id="children_under_3" name="children_under_3" required>
                 </div>
 
                 <div class="col-md-3">
                     <label for="children_5_to_16" class="form-label">عدد الابناء من 5 ل 16 </label>
-                    <input type="number" class="form-control" value="{{ $beneficial->familyDetailsInfo->children_5_to_16 }}" id="children_5_to_16" name="children_5_to_16" required>
+                    <input type="number" class="form-control" value="{{ $beneficial->familyDetailsInfo?->children_5_to_16 }}" id="children_5_to_16" name="children_5_to_16" required>
                 </div>
             </div>
 
@@ -175,11 +175,11 @@
                     <label for="document" class="form-label">الوثيقة </label>
                     <select class="form-select" id="document" name="document" required>
                         <option value="" disabled selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->document == 'palestinian_identity') selected @endif value="palestinian_identity"> هوية فلسطينية</option>
-                        <option @if ($beneficial->familyDetailsInfo->document == 'passport') selected @endif value="passport">جواز سفر </option>
-                        <option @if ($beneficial->familyDetailsInfo->document == 'identification_number') selected @endif value="identification_number">رقم تعريف </option>
-                        <option @if ($beneficial->familyDetailsInfo->document == 'jordanian_document') selected @endif value="jordanian_document">وثيقة اردنية </option>
-                        <option @if ($beneficial->familyDetailsInfo->document == 'other') selected @endif value="other">اخرى</option>
+                        <option @if ($beneficial->familyDetailsInfo?->document == 'palestinian_identity') selected @endif value="palestinian_identity"> هوية فلسطينية</option>
+                        <option @if ($beneficial->familyDetailsInfo?->document == 'passport') selected @endif value="passport">جواز سفر </option>
+                        <option @if ($beneficial->familyDetailsInfo?->document == 'identification_number') selected @endif value="identification_number">رقم تعريف </option>
+                        <option @if ($beneficial->familyDetailsInfo?->document == 'jordanian_document') selected @endif value="jordanian_document">وثيقة اردنية </option>
+                        <option @if ($beneficial->familyDetailsInfo?->document == 'other') selected @endif value="other">اخرى</option>
 
                     </select>
                 </div>
@@ -188,8 +188,8 @@
                     <label for="is_breadwinner_disabled" class="form-label">هل المعيل مصاب حرب </label>
                     <select class="form-select" id="is_breadwinner_disabled" name="is_breadwinner_disabled" required>
                         <option value="" disabled selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->is_breadwinner_disabled == '1') selected @endif value="1"> نعم </option>
-                        <option @if ($beneficial->familyDetailsInfo->is_breadwinner_disabled == '0') selected @endif value="0">لا  </option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_breadwinner_disabled == '1') selected @endif value="1"> نعم </option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_breadwinner_disabled == '0') selected @endif value="0">لا  </option>
                     </select>
                 </div>
 
@@ -197,8 +197,8 @@
                     <label for="has_disability" class="form-label">هل المعيل ذو اعاقة </label>
                     <select class="form-select" id="has_disability" name="has_disability" required>
                         <option value="" disabled selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->has_disability == '1') selected @endif value="1"> نعم </option>
-                        <option @if ($beneficial->familyDetailsInfo->has_disability == '0') selected @endif value="0">لا  </option>
+                        <option @if ($beneficial->familyDetailsInfo?->has_disability == '1') selected @endif value="1"> نعم </option>
+                        <option @if ($beneficial->familyDetailsInfo?->has_disability == '0') selected @endif value="0">لا  </option>
                     </select>
                 </div>
 
@@ -206,15 +206,15 @@
                     <label for="disability_type" class="form-label"> نوع الاعاقة</label>
                     <select class="form-select" id="disability_type" name="disability_type" >
                         <option value=""  selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'visual_impairment') selected @endif value="visual_impairment">إعاقة بصرية</option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'hearing_disability') selected @endif value="hearing_disability">إعاقة سمعية</option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'movement_disability') selected @endif value="movement_disability">إعاقة حركية </option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'mental_disability') selected @endif value="mental_disability"> إعاقة عقلية</option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'psychological_disability') selected @endif value="psychological_disability">إعاقة نفسية  </option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'speech_disability') selected @endif value="speech_disability"> إعاقة نطقية </option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'social_disability') selected @endif value="social_disability">إعاقة اجتماعية (التوحد أو اضطرابات التواصل)</option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'sensory_impairment') selected @endif value="sensory_impairment"> إعاقة حسية</option>
-                        <option @if ($beneficial->familyDetailsInfo->disability_type == 'multiple_disabilities') selected @endif value="multiple_disabilities"> إعاقة متعددة</option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'visual_impairment') selected @endif value="visual_impairment">إعاقة بصرية</option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'hearing_disability') selected @endif value="hearing_disability">إعاقة سمعية</option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'movement_disability') selected @endif value="movement_disability">إعاقة حركية </option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'mental_disability') selected @endif value="mental_disability"> إعاقة عقلية</option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'psychological_disability') selected @endif value="psychological_disability">إعاقة نفسية  </option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'speech_disability') selected @endif value="speech_disability"> إعاقة نطقية </option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'social_disability') selected @endif value="social_disability">إعاقة اجتماعية (التوحد أو اضطرابات التواصل)</option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'sensory_impairment') selected @endif value="sensory_impairment"> إعاقة حسية</option>
+                        <option @if ($beneficial->familyDetailsInfo?->disability_type == 'multiple_disabilities') selected @endif value="multiple_disabilities"> إعاقة متعددة</option>
                     </select>
                 </div>
             </div>
@@ -225,8 +225,8 @@
                     <label for="has_chronic_disease" class="form-label">لديه امراض مزمنه  </label>
                     <select class="form-select" id="has_chronic_disease" name="has_chronic_disease" required>
                         <option value=""  selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->has_chronic_disease == '1') selected @endif value="1"> نعم </option>
-                        <option @if ($beneficial->familyDetailsInfo->has_chronic_disease == '0') selected @endif value="0"> لا </option>
+                        <option @if ($beneficial->familyDetailsInfo?->has_chronic_disease == '1') selected @endif value="1"> نعم </option>
+                        <option @if ($beneficial->familyDetailsInfo?->has_chronic_disease == '0') selected @endif value="0"> لا </option>
                     </select>
                 </div>
 
@@ -234,8 +234,8 @@
                     <label for="war_victim" class="form-label">هل  يوجد فقيد حرب </label>
                     <select class="form-select" id="war_victim" name="war_victim" required>
                         <option value=""  selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->war_victim == '1') selected @endif value="1"> نعم </option>
-                        <option @if ($beneficial->familyDetailsInfo->war_victim == '0') selected @endif value="0">لا  </option>
+                        <option @if ($beneficial->familyDetailsInfo?->war_victim == '1') selected @endif value="1"> نعم </option>
+                        <option @if ($beneficial->familyDetailsInfo?->war_victim == '0') selected @endif value="0">لا  </option>
                     </select>
                 </div>
 
@@ -243,8 +243,8 @@
                     <label for="income_source" class="form-label">هل يوجد مصدر دخل   </label>
                     <select class="form-select" id="income_source" name="income_source" required>
                         <option value=""  selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->income_source == '1') selected @endif value="1"> نعم </option>
-                        <option @if ($beneficial->familyDetailsInfo->income_source == '0') selected @endif value="0">لا  </option>
+                        <option @if ($beneficial->familyDetailsInfo?->income_source == '1') selected @endif value="1"> نعم </option>
+                        <option @if ($beneficial->familyDetailsInfo?->income_source == '0') selected @endif value="0">لا  </option>
                     </select>
                 </div>
 
@@ -252,8 +252,8 @@
                     <label for="is_employee" class="form-label"> هل المعيل موظف ؟ </label>
                     <select class="form-select" id="is_employee" name="is_employee" required>
                         <option value=""  selected>اختر  </option>
-                        <option @if ($beneficial->familyDetailsInfo->is_employee == '1') selected @endif value="1"> نعم </option>
-                        <option @if ($beneficial->familyDetailsInfo->is_employee == '0') selected @endif value="0">لا  </option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_employee == '1') selected @endif value="1"> نعم </option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_employee == '0') selected @endif value="0">لا  </option>
                     </select>
                 </div>
             </div>
@@ -270,7 +270,7 @@
                     <select class="form-select" id="province" name="province" required>
                         <option value="" disabled selected>اختر  </option>
                         @foreach($provinces as $province)
-                            <option @if ($beneficial->familyDetailsInfo->province == $province->id) selected @endif value="{{ $province->id }}">{{ $province->name }}</option>
+                            <option @if ($beneficial->familyDetailsInfo?->province == $province->id) selected @endif value="{{ $province->id }}">{{ $province->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -280,7 +280,7 @@
                     <select class="form-select" id="city" name="city" required>
                         <option disabled value="">اختر مدينة</option>
                         @foreach($cities as $city)
-                           <option @if ($beneficial->familyDetailsInfo->city == $city->id) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
+                           <option @if ($beneficial->familyDetailsInfo?->city == $city->id) selected @endif value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -290,7 +290,7 @@
                     <select class="form-select" id="housing_complex" name="housing_complex" required>
                         <option disabled value="">اختر </option>
                         @foreach($housing_complexs as $housing_complex)
-                           <option @if ($beneficial->familyDetailsInfo->housing_complex == $housing_complex->id) selected @endif value="{{ $housing_complex->id }}">{{ $housing_complex->name }}</option>
+                           <option @if ($beneficial->familyDetailsInfo?->housing_complex == $housing_complex->id) selected @endif value="{{ $housing_complex->id }}">{{ $housing_complex->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -300,22 +300,22 @@
             <div class="row mb-3">
                 <div class="col-md-3">
                     <label for="neighborhood" class="form-label">الحى</label>
-                    <input type="text" value="{{ $beneficial->familyDetailsInfo->neighborhood }}" class="form-control" id="neighborhood" name="neighborhood" required>
+                    <input type="text" value="{{ $beneficial->familyDetailsInfo?->neighborhood }}" class="form-control" id="neighborhood" name="neighborhood" required>
                 </div>
                 <div class="col-md-3">
                     <label for="street" class="form-label">الشارع</label>
-                    <input type="text" value="{{ $beneficial->familyDetailsInfo->street }}" class="form-control" id="street" name="street" required>
+                    <input type="text" value="{{ $beneficial->familyDetailsInfo?->street }}" class="form-control" id="street" name="street" required>
                 </div>
                 <div class="col-md-3">
                     <label for="nearest_landmark" class="form-label">اقرب معلم</label>
-                    <input type="text" value="{{ $beneficial->familyDetailsInfo->nearest_landmark }}" class="form-control" id="nearest_landmark" name="nearest_landmark" required>
+                    <input type="text" value="{{ $beneficial->familyDetailsInfo?->nearest_landmark }}" class="form-control" id="nearest_landmark" name="nearest_landmark" required>
                 </div>
                 <div class="col-md-3">
                     <label for="is_displaced" class="form-label">نازح / مقيم</label>
                     <select class="form-select" id="is_displaced" name="is_displaced" required>
                         <option  value="">اختر </option>
-                        <option @if ($beneficial->familyDetailsInfo->is_displaced == '0') selected @endif value="0">نازح</option>
-                        <option @if ($beneficial->familyDetailsInfo->is_displaced == '1') selected @endif value="1">مقيم</option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_displaced == '0') selected @endif value="0">نازح</option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_displaced == '1') selected @endif value="1">مقيم</option>
                     </select>
                 </div>
 
@@ -329,8 +329,8 @@
                     <label for="is_owner" class="form-label">ملك / إجار</label>
                     <select class="form-select" id="is_owner" name="is_owner" required>
                         <option  value="">اختر </option>
-                        <option @if ($beneficial->familyDetailsInfo->is_owner == '1') selected @endif value="1">ملك</option>
-                        <option @if ($beneficial->familyDetailsInfo->is_owner == '0') selected @endif value="0">إجار</option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_owner == '1') selected @endif value="1">ملك</option>
+                        <option @if ($beneficial->familyDetailsInfo?->is_owner == '0') selected @endif value="0">إجار</option>
                     </select>
                 </div>
 
@@ -338,26 +338,26 @@
                     <label for="housing_type" class="form-label">نوع السكن</label>
                     <select class="form-select" id="housing_type" name="housing_type" required>
                         <option  value="">اختر </option>
-                        <option @if ($beneficial->familyDetailsInfo->housing_type == 'concrete') selected @endif value="concrete">باطون</option>
-                        <option @if ($beneficial->familyDetailsInfo->housing_type == 'asbestos_sheets') selected @endif  value="asbestos_sheets">زينقو</option>
+                        <option @if ($beneficial->familyDetailsInfo?->housing_type == 'concrete') selected @endif value="concrete">باطون</option>
+                        <option @if ($beneficial->familyDetailsInfo?->housing_type == 'asbestos_sheets') selected @endif  value="asbestos_sheets">زينقو</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <label for="war_damage" class="form-label">هل يوجد أضرار حرب 2023</label>
                     <select class="form-select" id="war_damage" name="war_damage" required>
                         <option  value="">اختر </option>
-                        <option  @if ($beneficial->familyDetailsInfo->war_damage == '1') selected @endif value="1">نعم</option>
-                        <option  @if ($beneficial->familyDetailsInfo->war_damage == '0') selected @endif value="0">لا</option>
+                        <option  @if ($beneficial->familyDetailsInfo?->war_damage == '1') selected @endif value="1">نعم</option>
+                        <option  @if ($beneficial->familyDetailsInfo?->war_damage == '0') selected @endif value="0">لا</option>
                     </select>
                 </div>
                 <div class="col-md-3">
                     <label for="damage_type" class="form-label">نوع الضرر</label>
                     <select class="form-select" id="damage_type" name="damage_type" >
                         <option  value="">اختر </option>
-                        <option @if ($beneficial->familyDetailsInfo->damage_type == 'total_damage') selected @endif value="total_damage">ضرر كلي</option>
-                        <option @if ($beneficial->familyDetailsInfo->damage_type == 'partial_damage') selected @endif value="partial_damage">ضرر جزئي</option>
-                        <option @if ($beneficial->familyDetailsInfo->damage_type == 'uninhabitable_part') selected @endif value="uninhabitable_part">جزئي غير قابل للسكن</option>
-                        <option @if ($beneficial->familyDetailsInfo->damage_type == 'inhabitable_part') selected @endif value="inhabitable_part">جزئي قابل للسكن</option>
+                        <option @if ($beneficial->familyDetailsInfo?->damage_type == 'total_damage') selected @endif value="total_damage">ضرر كلي</option>
+                        <option @if ($beneficial->familyDetailsInfo?->damage_type == 'partial_damage') selected @endif value="partial_damage">ضرر جزئي</option>
+                        <option @if ($beneficial->familyDetailsInfo?->damage_type == 'uninhabitable_part') selected @endif value="uninhabitable_part">جزئي غير قابل للسكن</option>
+                        <option @if ($beneficial->familyDetailsInfo?->damage_type == 'inhabitable_part') selected @endif value="inhabitable_part">جزئي قابل للسكن</option>
                     </select>
 
 
