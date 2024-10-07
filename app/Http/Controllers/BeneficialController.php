@@ -105,9 +105,9 @@ class BeneficialController extends Controller
             'disability_type' => $request->disability_type ?? '-',
             'has_chronic_disease' => $request->has_chronic_disease,
             'war_victim' => $request->war_victim,
-            'income_source' => $request->income_source,
-            'average_income' => $request->average_income,
-            'is_employee' => $request->is_employee,
+            'income_source' => $request->income_source ?? 'no',
+            'average_income' => $request->average_income ?? 0,
+            'is_employee' => $request->is_employee ?? '0',
             'marital_status' => $request->marital_status,
         ]);
     }

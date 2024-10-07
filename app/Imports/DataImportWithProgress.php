@@ -107,7 +107,7 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'has_chronic_disease' => $attribute[28] == 'نعم' ? 1 : 0,
                             'war_victim' => $attribute[29] == 'نعم' ? 1 : 0,
                             'income_source' => $attribute[30]  == 'نعم' ? 1 : 0,
-                            'average_income' => $attribute[31],
+                            'average_income' => $attribute[31] ?? 0,
                             'is_employee' => $attribute[32] == 'نعم' ? 1 : 0,
                             'marital_status' =>  $this->ArToEn($attribute[23])  ?? '-',
                         ]);

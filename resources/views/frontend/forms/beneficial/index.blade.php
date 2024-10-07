@@ -274,32 +274,23 @@ input[type="number"]::-webkit-outer-spin-button {
                 </select>
             </div>
 
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <label for="income_source" class="form-label">هل يوجد مصدر دخل   </label>
                 <select class="form-select" id="income_source" name="income_source" required>
                     <option value=""  selected>اختر  </option>
                     <option value="1"> نعم </option>
                     <option value="0">لا  </option>
                 </select>
-            </div>
+            </div> --}}
 
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <label for="is_employee" class="form-label"> هل المعيل موظف ؟ </label>
                 <select class="form-select" id="is_employee" name="is_employee" required>
                     <option value=""  selected>اختر  </option>
                     <option value="1"> نعم </option>
                     <option value="0">لا  </option>
                 </select>
-            </div>
-        </div>
-
-
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <label for="average_income" class="form-label">متوسط الدخل </label>
-                <input type="number" class="form-control" id="average_income" name="average_income" >
-            </div>
-
+            </div> --}}
             <div class="col-md-3">
                 <label for="province" class="form-label"> المحافظة </label>
                 <select class="form-select" id="province" name="province" required>
@@ -316,6 +307,16 @@ input[type="number"]::-webkit-outer-spin-button {
                     <option disabled value="">اختر مدينة</option>
                 </select>
             </div>
+        </div>
+
+
+        <div class="row mb-3">
+            {{-- <div class="col-md-3">
+                <label for="average_income" class="form-label">متوسط الدخل </label>
+                <input type="number" class="form-control" id="average_income" name="average_income" >
+            </div> --}}
+
+
 
             <div class="col-md-3">
                 <label for="housing_complex" class="form-label"> التجمع السكني </label>
@@ -323,14 +324,11 @@ input[type="number"]::-webkit-outer-spin-button {
                     <option disabled value="">اختر </option>
                 </select>
             </div>
-
-        </div>
-
-        <div class="row mb-3">
             <div class="col-md-3">
                 <label for="neighborhood" class="form-label">الحى</label>
                 <input type="text" class="form-control" id="neighborhood" name="neighborhood" required>
             </div>
+
             <div class="col-md-3">
                 <label for="street" class="form-label">الشارع</label>
                 <input type="text" class="form-control" id="street" name="street" required>
@@ -339,6 +337,11 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="nearest_landmark" class="form-label">اقرب معلم</label>
                 <input type="text" class="form-control" id="nearest_landmark" name="nearest_landmark" required>
             </div>
+        </div>
+
+        <div class="row mb-3">
+
+
             <div class="col-md-3">
                 <label for="is_displaced" class="form-label">نازح / مقيم</label>
                 <select class="form-select" id="is_displaced" name="is_displaced" required>
@@ -347,13 +350,6 @@ input[type="number"]::-webkit-outer-spin-button {
                     <option value="1">مقيم</option>
                 </select>
             </div>
-
-
-        </div>
-
-
-        <div class="row mb-3">
-
             <div class="col-md-3">
                 <label for="is_owner" class="form-label">ملك / إجار</label>
                 <select class="form-select" id="is_owner" name="is_owner" required>
@@ -362,7 +358,6 @@ input[type="number"]::-webkit-outer-spin-button {
                     <option value="0">إجار</option>
                 </select>
             </div>
-
             <div class="col-md-3">
                 <label for="housing_type" class="form-label">نوع السكن</label>
                 <select class="form-select" id="housing_type" name="housing_type" required>
@@ -379,6 +374,10 @@ input[type="number"]::-webkit-outer-spin-button {
                     <option value="0">لا</option>
                 </select>
             </div>
+        </div>
+
+
+        <div class="row mb-3">
             <div class="col-md-3">
                 <label for="damage_type" class="form-label">نوع الضرر</label>
                 <select class="form-select" id="damage_type" name="damage_type" >
