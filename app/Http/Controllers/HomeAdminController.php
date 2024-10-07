@@ -128,7 +128,7 @@ class HomeAdminController extends Controller
     }
 
     public function excelCheck()  {
-        return view('admin.test.check');
+        return view('admin.test.check'); //sd
     }
 
     public function showForm()  {
