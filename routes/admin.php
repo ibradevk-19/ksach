@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\ProviderController;
 use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\DeliveryRecordController;
 use App\Http\Controllers\Admin\BeneficialController;
+use App\Http\Controllers\Admin\BeneficialManagementController;
 
 
 /*
@@ -113,3 +114,4 @@ Route::post('checker', [BeneficialController::class, 'checker'])->name('checker.
 Route::get('checker-result', [BeneficialController::class, 'result'])->name('checker.result');
 
 
+Route::get('beneficials', [BeneficialManagementController::class, 'index'])->name('beneficials.index');

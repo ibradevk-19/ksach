@@ -22,6 +22,18 @@ class FamilyDetailsInfo extends Model
     public function beneficial() {
         return $this->belongsTo(WordFood::class,'beneficial_id');
      }
+
+     public function province_name() {
+        return $this->hasOne(Province::class,'id','province');
+     }
+
+     public function city_name() {
+        return $this->hasOne(City::class,'id','city');
+     }
+
+     public function housing_complex_name() {
+        return $this->hasOne(HousingComplex::class,'id','housing_complex');
+     }
 }
 
 
