@@ -85,7 +85,7 @@
                   <div class="card-body">
                     <div class="row align-items-center">
                       <div class="col-10">
-                        <h3 class="h1">أرشادات</h3>
+                        <h3 class="h1">إرشادات</h3>
                         <div class="markdown text-secondary">
                           <div class="alert alert-success">
                               اضافة معلومات الابناء <a href="#" class="alert-link">اضغط هنا </a>!
