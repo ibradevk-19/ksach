@@ -31,15 +31,15 @@ class BeneficialController extends Controller
         if($request->file->getClientOriginalExtension() != 'xlsx') return redirect()->back()->with(["error" => "الرجاء التأكد من صيغة الملف (xls,xlsx)"]) ;
 
         // Excel::import(new UsersImport, request()->file('your_file'));
-        try{
+       // try{
                 Excel::import(new BeneficialCheckerImport,$request->file);
                 $data =  ImportExcelResulte::get();
                 $file_name = $request->file->getClientOriginalName();
                 return Excel::download(new TaxExport($data), $file_name);
                 //return redirect()->route('checker.create')->with(["success" => "تم جلب  البيانات  بنجاح"]);
-            } catch (Exception $e) {
-                return redirect()->route('checker.create')->with(["error" => "حدثت مشكلة في جلب البيانات"]);
-            }
+           // } catch (Exception $e) {
+             //   return redirect()->route('checker.create')->with(["error" => "حدثت مشكلة في جلب البيانات"]);
+           // }
     }
 
 
