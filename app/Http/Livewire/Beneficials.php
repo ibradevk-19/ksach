@@ -32,7 +32,12 @@ class Beneficials extends Component
     public $cities = null;
     public $marital_status = null;
     public $is_displaced = null;
-    public $a =  3;
+    public $damage_type =  null;
+    public $children =  null;
+    public $is_breadwinner_disabled =  null;
+    public $war_victim =  null;
+
+
     public function updatedSelectAll($value)
     {
         if ($value) {
@@ -77,14 +82,8 @@ class Beneficials extends Component
                     $q->where('marital_status', $this->marital_status);
                 });
             })->when($this->is_displaced, function ($query) {
-
-                if((int) $this->is_displaced != 1){
-                    $this->a  = 0;
-                }else{
-                    $this->a = 1;
-                }
                 $query->whereHas('familyDetailsInfo', function ($q) {
-                    $q->where('is_displaced','==', $this->a);
+                    $q->where('is_displaced', (int)$this->is_displaced);
                 });
             })->when($this->searchActor, function ($query) {
                 $query->whereHas('actor', function ($q) {
@@ -92,9 +91,32 @@ class Beneficials extends Component
                 });
             })->when($this->full_name, function ($query) {
                 $query->where('full_name', 'like', '%'.$this->full_name.'%');
-            })
-            ->when($this->id_num, function ($query) {
+            })->when($this->id_num, function ($query) {
                 $query->where('id_num',$this->id_num)->orWhere('wife_id_num',$this->id_num);
+            })->when($this->damage_type, function ($query) {
+                $query->whereHas('familyDetailsInfo', function ($q) {
+                    $q->where('damage_type', $this->damage_type);
+                });
+            })->when($this->children, function ($query) {
+                $query->whereHas('familyDetailsInfo', function ($q) {
+                    if($this->children == 'children_under_2'){
+                        $q->where('children_under_2','>=', 1);
+                    }
+                    if($this->children == 'children_under_3'){
+                        $q->where('children_under_3','>=', 1);
+                    }
+                    if($this->children == 'children_5_to_16'){
+                        $q->where('children_5_to_16','>=', 1);
+                    }
+                });
+            })->when($this->is_breadwinner_disabled, function ($query) {
+                $query->whereHas('familyDetailsInfo', function ($q) {
+                    $q->where('is_breadwinner_disabled', $this->is_breadwinner_disabled);
+                });
+            })->when($this->war_victim, function ($query) {
+                $query->whereHas('familyDetailsInfo', function ($q) {
+                    $q->where('war_victim', $this->war_victim);
+                });
             });
 
             if($this->showAll){

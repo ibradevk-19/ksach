@@ -76,8 +76,42 @@
                     <option value="1">مقيم</option>
                 </select>
             </div>
+            <div class="col-md-3">
+                <label for="damage_type" class="form-label">نوع الضرر</label>
+                <select class="form-select" wire:model="damage_type" id="damage_type" name="damage_type" >
+                    <option  value="">اختر </option>
+                    <option value="total_damage">ضرر كلي</option>
+                    <option value="partial_damage">ضرر جزئي</option>
+                    <option value="uninhabitable_part">جزئي غير قابل للسكن</option>
+                    <option value="inhabitable_part">جزئي قابل للسكن</option>
+                </select>
+            </div>
 
-
+            <div class="col-md-3">
+                <label for="children" class="form-label">الاطفال</label>
+                <select class="form-select" wire:model="children" id="children" name="children" >
+                    <option  value="">اختر </option>
+                    <option value="children_under_2"> الاطفال اقل من سنتين </option>
+                    <option value="children_under_3"> الاطفال اقل من 3 سنوات </option>
+                    <option value="children_5_to_16">عدد الابناء من 5 ل 16</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="is_breadwinner_disabled" class="form-label">هل المعيل مصاب حرب </label>
+                <select class="form-select" wire:model="is_breadwinner_disabled" id="is_breadwinner_disabled" name="is_breadwinner_disabled" required>
+                    <option value="" disabled selected>اختر  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="war_victim" class="form-label">هل  يوجد فقيد حرب </label>
+                <select class="form-select" wire:model="war_victim" id="war_victim" name="war_victim" required>
+                    <option value=""  selected>اختر  </option>
+                    <option value="1"> نعم </option>
+                    <option value="0">لا  </option>
+                </select>
+            </div>
         </div>
         <div class="mb-4">
 

@@ -89,7 +89,7 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'neighborhood' => $attribute[9],
                             'street' => $attribute[10],
                             'nearest_landmark' => $attribute[11],
-                            'is_displaced' => trim($attribute[12]) == 'نازح' ? 0 : 1,
+                            'is_displaced' =>  trim($attribute[12]) == 'نازح' ? 0 : 1,
                             'is_owner' =>  $this->ArToEn(trim($attribute[13]))  ?? '-',
                             'housing_type' => $this->ArToEn($attribute[14])  ?? '-',
                             'war_damage' => $attribute[15] == 'نعم' ? 1 : 0,

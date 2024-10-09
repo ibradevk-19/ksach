@@ -346,7 +346,7 @@ input[type="number"]::-webkit-outer-spin-button {
                 <label for="is_displaced" class="form-label">نازح / مقيم</label>
                 <select class="form-select" id="is_displaced" name="is_displaced" required>
                     <option  value="">اختر </option>
-                    <option value="0">نازح</option>
+                    <option value="3">نازح</option>
                     <option value="1">مقيم</option>
                 </select>
             </div>
