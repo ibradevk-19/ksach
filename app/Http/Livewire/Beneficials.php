@@ -29,8 +29,10 @@ class Beneficials extends Component
     public $BeneficialsDetails;  // Holds the selected invoice details for the modal
     public $province = null;
     public $housing_complexs = null;
-
-
+    public $cities = null;
+    public $marital_status = null;
+    public $is_displaced = null;
+    public $a =  3;
     public function updatedSelectAll($value)
     {
         if ($value) {
@@ -42,6 +44,7 @@ class Beneficials extends Component
 
     public function toggleShowAll()
     {
+
         $this->showAll = !$this->showAll;
 
         if ($this->showAll) {
@@ -53,11 +56,13 @@ class Beneficials extends Component
 
     public function showAll()
     {
+
         $this->perPage = null;  // This will show all items
     }
 
     public function render()
     {
+
         $query = WordFood::with('actor','familyDetailsInfo','familyDetailsInfo.province_name','familyDetailsInfo.city_name','familyDetailsInfo.housing_complex_name','deliveryRecordBeneficials','deliveryRecordBeneficials.product')
             ->when($this->province, function ($query) {
                 $query->whereHas('familyDetailsInfo.province_name', function ($q) {
@@ -66,6 +71,20 @@ class Beneficials extends Component
             })->when($this->housing_complexs, function ($query) {
                 $query->whereHas('familyDetailsInfo.housing_complex_name', function ($q) {
                     $q->where('id', $this->housing_complexs);
+                });
+            })->when($this->marital_status, function ($query) {
+                $query->whereHas('familyDetailsInfo', function ($q) {
+                    $q->where('marital_status', $this->marital_status);
+                });
+            })->when($this->is_displaced, function ($query) {
+
+                if((int) $this->is_displaced != 1){
+                    $this->a  = 0;
+                }else{
+                    $this->a = 1;
+                }
+                $query->whereHas('familyDetailsInfo', function ($q) {
+                    $q->where('is_displaced','==', $this->a);
                 });
             })->when($this->searchActor, function ($query) {
                 $query->whereHas('actor', function ($q) {
@@ -89,8 +108,8 @@ class Beneficials extends Component
             'beneficials' => $beneficials,
             'actors' => Actor::all(),
             'provinces' => $provinces,
-            'cities' => City::get(),
-            'housing_complexss' => HousingComplex::get(),
+            'cities_list' => City::where('province_id',$this->province)->get(),
+            'housing_complexss_list' => HousingComplex::where('city_id',$this->cities)->get(),
         ]);
     }
 }

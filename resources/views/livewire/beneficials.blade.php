@@ -23,28 +23,39 @@
             <div class="col-md-3">
                 <label for="province" class="form-label"> المحافظة </label>
                 <select class="form-select" id="province" wire:model="province" name="province" >
-                    <option value=""  selected>اختر  </option>
+                    <option value=""  >اختر  </option>
                     @foreach($provinces as $province)
                         <option value="{{ $province->id }}">{{ $province->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="housing_complexs" class="form-label"> التجمع السكاني </label>
-                <select class="form-select" id="housing_complexs" wire:model="housing_complexs" name="housing_complexs" >
-                    <option value=""  selected>اختر  </option>
-                    @foreach($housing_complexss as $item)
+                <label for="cities" class="form-label"> المدن  </label>
+                <select class="form-select" id="cities" wire:model="cities" name="cities" >
+                    <option value=""  >اختر  </option>
+                    @foreach($cities_list as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="searchPort" class="form-label">اسم المنفذ</label>
-                <select id="searchPort" wire:model="searchPort" class="form-control">
-                    <option value="">كل المنافذ</option>
-                    <option value="1">معبر رفح</option>
-                    <option value="2">معبر كرم ابوسالم</option>
-                    <option value="3">معبر ايرز</option>
+                <label for="housing_complexs" class="form-label"> التجمع السكاني </label>
+                <select class="form-select" id="housing_complexs" wire:model="housing_complexs" name="housing_complexs" >
+                    <option value=""  >اختر  </option>
+                    @foreach($housing_complexss_list as $item)
+                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="marital_status" class="form-label">الحالة الاجتماعية</label>
+                <select class="form-select" wire:model="marital_status" id="marital_status" name="marital_status" required>
+                    <option value=""  >اختر الحالة الاجتماعية</option>
+                    <option value="single">أعزب</option>
+                    <option value="married">متزوج</option>
+                    <option value="divorced">مطلق</option>
+                    <option value="widowed">أرمل</option>
+                    <option value="breadwinner">بلا معيل</option>
                 </select>
             </div>
             <div class="col-md-3">
@@ -58,8 +69,12 @@
                 </select>
             </div>
             <div class="col-md-3">
-                <label for="searchOgName" class="form-label">اسم المنظمة</label>
-                <input type="text" id="searchOgName" wire:model="searchOgName" class="form-control" placeholder="ابحث عن اسم المنظمة">
+                <label for="is_displaced" class="form-label">نازح / مقيم</label>
+                <select class="form-select" wire:model="is_displaced" id="is_displaced" name="is_displaced" >
+                    <option  value="">اختر </option>
+                    <option value="0">نازح</option>
+                    <option value="1">مقيم</option>
+                </select>
             </div>
 
 

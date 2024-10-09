@@ -28,22 +28,22 @@ class DeliveryRecordImport implements ToCollection
      */
     public function collection(Collection $collection)
     {
-        
-     
-    
+
+
+
         foreach ($collection as $key => $attribute) {
-            
+
             try {
                 if($key < 4 ) {
                     continue;
-                }  
+                }
                 $chek_if_user_exest = WordFood::where('id_num', $attribute[3])->first();
 
                 //$chek_if_user_exest = WordFood::where('id_num', $attribute[3])->orWhere('wife_id_num', $attribute[3])->first();
                 // $chek_if_exest = DeliveryRecordBeneficial::where('delivery_record_id', $this->delivry_id)->orWhere('wife_id_num', $attribute[3])->first();
 
                 if($attribute[3] != null) {
-                   
+
                     if($chek_if_user_exest){
                        $chek_if_exest = DeliveryRecordBeneficial::where('beneficial_id', $chek_if_user_exest->id)->first();
                        if($chek_if_exest){
@@ -56,7 +56,7 @@ class DeliveryRecordImport implements ToCollection
                             'status' => 1 // not reseve eet
                          ]);
                        }
-                       
+
                     }else{
                       $user_data = Civilrecord::where('ID',$attribute[3])->first();
                       $user_sokan = Sokan::where('id_number',$attribute[3])->first();
@@ -67,22 +67,22 @@ class DeliveryRecordImport implements ToCollection
                        }else{
                         if($user_data || $user_sokan ){
                             $user =  WordFood::create([
-                                'full_name' => $attribute[2],
-                                'id_num' => $attribute[3],
-                                'wife_name' => $attribute[4],
-                                'wife_id_num' => $attribute[5],
-                                'family_count'  => $attribute[7],
-                                'marital_status'  => 1,
-                                'mobile'  => $attribute[6],
+                                'full_name' => $attribute[1],
+                                'id_num' => $attribute[2],
+                                'wife_name' => $attribute[3],
+                                'wife_id_num' => $attribute[4],
+                                'family_count' => $attribute[17],
+                                'marital_status' => 1,
+                                'mobile' => $attribute[5],
                                 'family_id' => Family::where('code',$attribute[8])->first()->id ?? null,
                                 'actor_id' => Actor::where('id',$attribute[9])->first()->id ?? null,
                                 'status' => 1
                             ]);
-    
+
                             if($user){
                                 $chek_if_exest = DeliveryRecordBeneficial::where('beneficial_id', $user->id)->first();
                                     if($chek_if_exest){
-                                        
+
                                     }else{
                                         DeliveryRecordBeneficial::create([
                                             'delivery_record_id' => $this->delivry_id,
@@ -91,17 +91,17 @@ class DeliveryRecordImport implements ToCollection
                                             'status' => 1 // not reseve eet
                                         ]);
                                     }
-    
-                               
+
+
                             }
                           }
                        }
-                   
-                    
+
+
                     }
-                 
+
                 }else {
-                    
+
                 }
 
             } catch (\Throwable $th) {

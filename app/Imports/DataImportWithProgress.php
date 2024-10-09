@@ -105,10 +105,10 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                             'disability_type' => $this->ArToEn($attribute[27])  ?? '-',
                             'has_chronic_disease' => $attribute[28] == 'نعم' ? 1 : 0,
                             'war_victim' => $attribute[29] == 'نعم' ? 1 : 0,
-                            'income_source' => $attribute[30]  == 'نعم' ? 1 : 0,
-                            'average_income' => $attribute[31] ?? 0,
-                            'is_employee' => $attribute[32] == 'نعم' ? 1 : 0,
-                            'marital_status' =>  $this->ArToEn(trim($attribute[23]))  ?? '-',
+                            // 'income_source' => $attribute[30]  == 'نعم' ? 1 : 0,
+                            // 'average_income' => $attribute[31] ?? 0,
+                            // 'is_employee' => $attribute[32] == 'نعم' ? 1 : 0,
+                            'marital_status' =>  $this->marital(trim($attribute[23]))  ?? '-',
                         ]);
                         try {
                             User::create([
@@ -210,8 +210,29 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
             'jordanian_document' => 'وثيقة اردنية',
             'other' => 'اخرى',
             'single' => 'أعزب',
-            'married' => 'متزوج',
+            'married' => 'married',
             'married' => 'متزوجة',
+            'divorced' => 'مطلق',
+            'divorced'=> 'مطلقة',
+            'widowed' => 'ارمل',
+            'widowed' => 'ارملة',
+            'breadwinner' => 'بلا معيل',
+        ];
+
+        // Search for the value and return the corresponding key
+        $key = array_search(trim($val), $array);
+        return $key !== false ? $key : null;
+
+
+    }
+
+
+    private function marital($val)  {
+        $array = [
+            'single' => 'أعزب',
+            'single' => 'اعزب',
+            'married' => 'married',
+            'married' => 'married',
             'divorced' => 'مطلق',
             'divorced'=> 'مطلقة',
             'widowed' => 'ارمل',

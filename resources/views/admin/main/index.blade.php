@@ -37,17 +37,17 @@
                 </div>
             </div>
         </div>
-       
+
         <!-- end page title -->
         <div class="row">
             @csrf
-            
+
         <div class="col-12">
-       
+
             <!-- <div class="card">
                 <div class="card-body">
                     <form action=" {{route('admin.main.index')}}" method="get" enctype="multipart/form-data">
-                      
+
                     <div class="mb-3 row">
                         <div class="col-md-3">
                             <input class="form-control" placeholder="الإسم" type="text" value="{{old('full_name')}}" name="full_name" id="example-text-input">
@@ -69,7 +69,7 @@
                         <div class="col-md-3">
                             <input class="form-control" placeholder="عدد الافراد" type="text" value="{{old('family_count')}}" name="family_count" id="example-text-input">
                         </div>
-                   
+
                     </div>
                     <div class="col-12">
                         <button type="submit"  class="btn btn-primary disabled_button_click">بحث</button>
@@ -87,7 +87,7 @@
     <div class="row my-3">
             <div class="col-6">
                 <a href="{{route('admin.main.create')}}"  class="btn btn-primary">مستفيد جديد</a>
-                <a href="{{route('admin.import')}}"  class="btn btn-primary">استيراد من ملف </a>
+                <a href="{{route('admin.import.index')}}"  class="btn btn-primary">استيراد من ملف </a>
             </div>
         </div>
         <div class="row">
@@ -173,10 +173,10 @@
                 processing: true,
                 serverSide: true,
                 order: [[0, "desc" ]],
-                lengthMenu: [ [10, 25, 50,300,400, 1000,3000,5000], [10, 25, 50,300,400, 1000,3000,5000] ], 
+                lengthMenu: [ [10, 25, 50,300,400, 1000,3000,5000], [10, 25, 50,300,400, 1000,3000,5000] ],
                 ajax: "{{ route('admin.main.index') }}",
                 columns: columns_data,
-               
+
                 language: {
                     // "url": "//cdn.datatables.net/plug-ins/1.11.4/i18n/ar.json",
                     paginate: {
@@ -194,7 +194,7 @@
                 }, drawCallback: function () {
                     $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
                 },
-               
+
 
             });
         });
