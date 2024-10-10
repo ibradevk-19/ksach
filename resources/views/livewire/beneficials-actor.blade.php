@@ -20,6 +20,7 @@
                     <th>رقم هوية الزوجة</th>
                     <th>رقم الجوال</th>
                     <th>عدد الافراد</th>
+                    <th> الحالة</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,6 +34,13 @@
                     <td>{{ $item->wife_id_num }}</td>
                     <td>{{ $item->mobile }}</td>
                     <td>{{ $item->family_count }}</td>
+                    <td>
+                        @if($item->is_approved == 1)
+                            <span class="badge rounded-pill bg-success">معتمد</span>
+                        @elseif($item->is_approved == 2)
+                            <span class="badge rounded-pill bg-danger">قيد الانتظار</span>
+                        @endif
+                    </td>
                 </tr>
             @empty
                 <tr>
