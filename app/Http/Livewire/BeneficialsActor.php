@@ -4,8 +4,12 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\WordFood;
+use Livewire\WithPagination;
+
 class BeneficialsActor extends Component
 {
+    use WithPagination;
+
     public $full_name = null;
 
     // Reset the pagination when the search query (full_name) is updated
