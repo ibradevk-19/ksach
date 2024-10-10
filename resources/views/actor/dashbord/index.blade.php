@@ -17,10 +17,10 @@
 
       @import url('http://www.fontstatic.com/f=jazeera,jazeera-light');
       :root {
-      	font-family: 'jazeera-light';
+        font-family: 'Cairo', sans-serif;
       }
       body * {
-        font-family: 'jazeera-light';
+        font-family: 'Cairo', sans-serif;
       }
     </style>
      @livewireStyles
