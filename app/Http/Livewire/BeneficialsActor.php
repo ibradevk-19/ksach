@@ -8,6 +8,12 @@ class BeneficialsActor extends Component
 {
     public $full_name = null;
 
+    // Reset the pagination when the search query (full_name) is updated
+    public function updatingFullName()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
 
