@@ -14,6 +14,9 @@ use App\Http\Controllers\DashboardContrller;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserInfoController;
+use App\Http\Controllers\Actor\ActorAuthController;
+use App\Http\Controllers\Actor\HomeActorController;
+
 
 
 
@@ -74,7 +77,14 @@ Route::group(['prefix' => 'panel'], function () {
 
 });
 
+Route::group(['prefix' => 'representative'], function () {
 
+
+    Route::get('login', [ActorAuthController::class, "index"])->name("actor.actor-login");
+    Route::post('login', [ActorAuthController::class, "login"])->name("actor.login.post");
+    Route::get('/index', [HomeActorController::class, 'home'])->name('representative.index');
+
+});
 
 
 

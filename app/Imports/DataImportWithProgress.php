@@ -76,7 +76,9 @@ class DataImportWithProgress implements ToCollection, WithChunkReading
                         'mobile' => $attribute[5],
                         'family_id' => Family::where('code', $attribute[8])->first()->id ?? null,
                         'actor_id' => $this->actor_id ?? null,
-                        'status' => 2 // لم يستلم
+                        'status' => 2, // لم يستلم
+                        'is_approved' => 1, // witing approved
+                        'form_src' => 3
                     ]);
 
                     if($word_food){

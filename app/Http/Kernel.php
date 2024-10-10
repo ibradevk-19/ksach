@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'AdminAuth' => \App\Http\Middleware\AdminAuth::class,
+        'ActorAuth' => \App\Http\Middleware\ActorAuth::class,
         'CheckIfSuperAdmin' => \App\Http\Middleware\CheckIfSuperAdmin::class,
         'CheckIfActive' => \App\Http\Middleware\CheckIfActive::class,
         'AdminEditRole' => \App\Http\Middleware\AdminEditRole::class,

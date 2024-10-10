@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Actor;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -50,6 +51,13 @@ class Controller extends BaseController
 
 
         if (($obj instanceof Admin ) && Arr::has($request->all(), 'password')) {
+            if ($request->password) {
+                $data['password'] = Hash::make($request->password);
+                $obj->password = $data['password'];
+            }
+        }
+
+        if (($obj instanceof Actor ) && Arr::has($request->all(), 'password')) {
             if ($request->password) {
                 $data['password'] = Hash::make($request->password);
                 $obj->password = $data['password'];
@@ -131,50 +139,7 @@ class Controller extends BaseController
 
 
     public function getGlobalUser(){
-        if(auth('jwt')->user()){
-            // dd($user_id = auth('jwt')->user());
-             $user =  User::where('global_id',auth('jwt')->user()->user_id)->first();
 
-            if($user){
-                RedisServices::setUser($user->id, [
-                        'user_id' => $user->id,
-                        'full_name' => $user->first_name . ' ' . $user->last_name,
-                        'phone' => $user->phone,
-                        'email' => $user->email,
-                        'score' => $user->score ?? 0,
-                    ]);
-
-                return $user;
-            }else{
-                $user_global =  auth('jwt')->user();
-                $access_token= trim(Str::replaceFirst('Bearer ', '', request()->header('Authorization')));
-                $newuser =  User::create([
-                    'global_id' => $user_global->user_id,
-                    'email' => $user_global->email ?$user_global->email : null,
-                    'phone' => $user_global->phone ? $user_global->phone : null,
-                    'global_token' => $access_token,
-                    'first_name' => $user_global->first_name,
-                    'last_name' => $user_global->last_name,
-                    'image' => $user_global->image,
-                    'date_of_birth' => $user_global->date_of_birth,
-                    'country_code' => $user_global->country_code,
-                    'phone_verified' => $user_global->phone_verified == true ? true : false,
-                    'gender' => (int)$user_global->gender,
-                    'fcm_token' => request()->header('fcm_token'),
-                    'device_type' => $this->getDeviceTypeText($user_global->device_id),
-                ]);
-                RedisServices::setUser($newuser->id, [
-                    'user_id' => $newuser->id,
-                    'full_name' => $newuser->first_name . ' ' . $newuser->last_name,
-                    'phone' => $newuser->phone,
-                    'email' => $newuser->email,
-                    'score' => $user->score ?? 0,
-                ]);
-                return $newuser;
-            }
-        }else{
-            return $this->apiResponse(null, false, "مشكلة في تسجيل الدخول");
-        }
 
 
 
@@ -196,5 +161,5 @@ class Controller extends BaseController
 
 
 
-    
+
 }

@@ -74,6 +74,8 @@ class BeneficialController extends Controller
             'family_count' => $request->family_count,
             'marital_status' => $request->marital_status,
             'mobile' => $request->mobile,
+            'is_approved' => 2, // witing approved
+            'form_src' => 1
         ]);
     }
 

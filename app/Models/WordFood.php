@@ -19,7 +19,9 @@ class WordFood extends Model
         'mobile',
         'family_id',
         'actor_id',
-        'status'
+        'status',
+        'is_approved',
+        'form_src'
     ];
 
      public function flamily() {

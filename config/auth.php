@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+        'actor' => [
+            'driver' => 'session',
+            'provider' => 'actors',
+        ],
         'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
@@ -77,6 +81,11 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
+        'actors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Actor::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -107,6 +116,13 @@ return [
         ],
         'admin' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'actor' => [
+            'provider' => 'actors',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
