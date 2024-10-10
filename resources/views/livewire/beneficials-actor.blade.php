@@ -56,7 +56,9 @@
             </table>
           </div>
           <div>
-            {{ $beneficials->links() }}
+            {{-- {{ $beneficials->links() }} --}}
+            {{ $beneficials->links('vendor.livewire.bootstrap') }}
+
             </div>
         </div>
       </div>
