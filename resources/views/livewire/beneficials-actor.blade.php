@@ -36,9 +36,13 @@
                     <td>{{ $item->family_count }}</td>
                     <td>
                         @if($item->is_approved == 1)
-                            <span class="badge rounded-pill bg-success">معتمد</span>
+                            <span class="badge rounded-pill bg-success" style="
+                            color: white;
+                        ">معتمد</span>
                         @elseif($item->is_approved == 2)
-                            <span class="badge rounded-pill bg-danger">قيد الانتظار</span>
+                            <span class="badge rounded-pill bg-danger" style="
+                            color: white;
+                        ">قيد الانتظار</span>
                         @endif
                     </td>
                 </tr>
